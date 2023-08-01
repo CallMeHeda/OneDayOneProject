@@ -1,0 +1,17 @@
+{
+  "name": "digital-clock_ts",
+  "version": "1.0.0",
+  "description": "Day one : Digital clock",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FATIMA EL-AMRI",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "ts-loader": "^9.4.4"
+  }
+}
