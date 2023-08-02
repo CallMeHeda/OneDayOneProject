@@ -1,0 +1,15 @@
+{
+  "name": "daytwo_calculator-ts",
+  "version": "1.0.0",
+  "description": "Day Two : Calculator with Typescript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Typescript",
+    "tailwind"
+  ],
+  "author": "Fatima EL-AMRI",
+  "license": "ISC"
+}
