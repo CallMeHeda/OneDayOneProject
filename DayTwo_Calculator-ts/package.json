@@ -11,5 +11,9 @@
     "tailwind"
   ],
   "author": "Fatima EL-AMRI",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6"
+  }
 }
