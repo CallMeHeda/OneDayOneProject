@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-gray-900
+}
+
+.titleBox {
+    @apply flex justify-center mt-8
+}
+
+.titleBox h1 {
+    @apply text-2xl font-semibold uppercase tracking-widest text-gray-200 font-serif
+}
+
+footer {
+    @apply fixed bottom-0 w-full p-4 bg-gray-800 border-t border-gray-600
+}
+
+footer p {
+    @apply text-sm text-gray-200 text-center
+}
