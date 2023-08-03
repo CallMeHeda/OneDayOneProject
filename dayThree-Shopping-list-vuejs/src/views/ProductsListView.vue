@@ -5,7 +5,10 @@ export default {
   data() {
     return {}
   },
-  components: { ProductList }
+  methods: {},
+  components: {
+    ProductList
+  }
 }
 </script>
 
@@ -15,4 +18,10 @@ export default {
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+</style>
