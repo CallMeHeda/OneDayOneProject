@@ -54,14 +54,11 @@ export default defineComponent({
           const responseData = response.data
           if (Array.isArray(responseData)) {
             this.products = this.filterProducts(responseData)
-            console.log(this.products)
           } else {
             this.products = [responseData]
-            console.log(this.products, ' 2')
           }
           this.$emit('productToSearch', responseData)
           this.loading = false
-          console.log(this.products)
         } catch (error) {
           console.error(error)
           this.loading = false

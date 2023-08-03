@@ -1,5 +1,33 @@
 <template>
   <SearchProduct @productToSearch="handleProductSearch" />
+  <div class="products" v-if="products && Array.isArray(products)">
+    <div v-for="(product, i) in products" :key="product.code">
+      <div
+        class="product"
+        v-if="product.name && product.name.toLowerCase().includes(searchQuery.toLowerCase())"
+      >
+        <div class="" v-if="product.images[0].url">
+          <img :src="product.images[0].url" :alt="product.name" />
+        </div>
+        <div v-else>
+          <img src="../assets/images/notFound.jpg" alt="Image Not Found" />
+        </div>
+        <div class="productNameBox">
+          <p>{{ product.name }}</p>
+          <v-checkbox
+            v-model="isChecked[i]"
+            color="teal-lighten-2"
+            class="checkbox"
+            :value="product"
+            @change="handleClick(i)"
+          ></v-checkbox>
+        </div>
+      </div>
+      <div v-else>
+        <p>{{ product.message }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -48,9 +76,47 @@ export default {
   methods: {
     handleProductSearch(products: []) {
       this.products = products
+    },
+
+    handleClick(index: number) {
+      this.$emit('isChecked', index)
+      const selectedProduct = this.products[index]
+      const counterValue = this.isChecked.filter((isChecked) => isChecked).length
+      console.log(counterValue)
     }
   }
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  color: white;
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+
+    img {
+      width: 250px;
+    }
+    .productNameBox {
+      display: flex;
+
+      p {
+        letter-spacing: 1px;
+      }
+      .checkbox {
+        position: relative;
+        top: -15px;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+</style>

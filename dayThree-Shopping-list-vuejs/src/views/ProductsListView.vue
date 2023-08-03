@@ -3,7 +3,9 @@ import ProductList from '@/components/ProductList.vue'
 
 export default {
   data() {
-    return {}
+    return {
+      isChecked: [] as boolean[]
+    }
   },
   methods: {},
   components: {
