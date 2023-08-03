@@ -7,6 +7,11 @@ const router = createRouter({
       path: '/',
       name: 'products-list',
       component: () => import('../views/ProductsListView.vue')
+    },
+    {
+      path: '/myBasket',
+      name: 'my-basket',
+      component: () => import('../views/ShoppingListView.vue')
     }
   ]
 })

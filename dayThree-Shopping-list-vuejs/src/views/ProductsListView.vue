@@ -1,22 +1,36 @@
 <script lang="ts">
-import ProductList from '@/components/ProductList.vue'
+import ProductsList from '../components/ProductsList.vue'
+import Header from '@/components/Header.vue'
+import store from '@/store'
 
 export default {
   data() {
     return {
       isChecked: [] as boolean[]
+      // counterValue: 0,
     }
   },
-  methods: {},
+  methods: {
+    counter(index: number) {
+      this.isChecked[index] = !this.isChecked[index]
+      // const counterValue = this.isChecked.filter(isChecked => isChecked).length;
+      // localStorage.setItem('countProducts', JSON.stringify(this.counterValue))
+      // store.dispatch('initializeState');
+      // const counterValue = store.getters.getCounterValue;
+      // console.log(store.getters.getCounterValue);
+    }
+  },
   components: {
-    ProductList
+    Header,
+    ProductsList
   }
 }
 </script>
 
 <template>
+  <Header />
   <main>
-    <ProductList />
+    <ProductsList @isChecked="counter" />
   </main>
 </template>
 
