@@ -7,11 +7,11 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { ContactProps } from "../interfaces/IContactProps";
+import { IContactProps } from "../interfaces/IContactProps";
 
 library.add(faIdBadge, faMobileScreenButton, faAt, faTrashCan);
 
-export default function Contact({ contactProps, onClick }: ContactProps) {
+export default function Contact({ contactProps, onClick }: IContactProps) {
   const handleDeleteClick = () => {
     onClick(contactProps.id);
   };

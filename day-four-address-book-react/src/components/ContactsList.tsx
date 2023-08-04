@@ -1,11 +1,11 @@
 import { useState, ChangeEvent } from "react";
 import Contact from "./Contact";
-import { ContactListProps } from "../interfaces/IContactListProps";
+import { IContactListProps } from "../interfaces/IContactListProps";
 
 export default function ContactList({
   contacts,
   handleDelete,
-}: ContactListProps) {
+}: IContactListProps) {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

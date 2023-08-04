@@ -1,7 +1,9 @@
-import ContactList from "./components/ContactsList";
-import { IContact } from "./interfaces/IContact";
 import "./styles/app.css";
+
 import { useState } from "react";
+import NewContact from "./components/NewContact";
+import { IContact } from "./interfaces/IContact";
+import ContactList from "./components/ContactsList";
 
 function App() {
   const [contacts, setContacts] = useState<IContact[]>([
@@ -25,9 +27,31 @@ function App() {
     setContacts(update_contact);
   };
 
+  const handleAdd = (contact: {
+    id: number;
+    name: string;
+    phone: string;
+    email: string;
+  }) => {
+    const copy_contact = [...contacts];
+    copy_contact.push(contact);
+    setContacts(copy_contact);
+  };
+
   return (
-    <div className="App">
-      <ContactList contacts={contacts} handleDelete={handleDelete} />
+    <div>
+      <div className="App container">
+        <h1>
+          <span>DAY 4 :</span> Address Book<span>.</span>
+        </h1>
+        <NewContact handleAdd={handleAdd} />
+        <ContactList contacts={contacts} handleDelete={handleDelete} />
+      </div>
+      <footer>
+        <p>
+          © 2023 - <span>Fatima.</span> Tous droits réservés.
+        </p>
+      </footer>
     </div>
   );
 }

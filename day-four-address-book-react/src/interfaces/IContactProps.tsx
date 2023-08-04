@@ -1,6 +1,6 @@
 import { IContact } from "./IContact";
 
-export interface ContactProps {
+export interface IContactProps {
   contactProps: IContact;
   onClick: (id: number) => void;
 }
