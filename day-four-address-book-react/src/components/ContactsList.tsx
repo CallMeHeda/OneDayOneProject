@@ -2,7 +2,10 @@ import { useState, ChangeEvent } from "react";
 import Contact from "./Contact";
 import { ContactListProps } from "../interfaces/IContactListProps";
 
-export default function ContactList({ contacts }: ContactListProps) {
+export default function ContactList({
+  contacts,
+  handleDelete,
+}: ContactListProps) {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +32,10 @@ export default function ContactList({ contacts }: ContactListProps) {
       </div>
       {filterContacts.map((contact) => (
         <article key={contact.id}>
-          <Contact />
+          <Contact
+            contactProps={contact}
+            onClick={() => handleDelete(contact.id)}
+          />
         </article>
       ))}
     </div>

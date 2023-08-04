@@ -6,20 +6,15 @@ import {
   faAt,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import { IContact } from "../interfaces/IContact";
-import { useState } from "react";
+
+import { ContactProps } from "../interfaces/IContactProps";
 
 library.add(faIdBadge, faMobileScreenButton, faAt, faTrashCan);
 
-export default function Contact() {
-  const [contacts, setContacts] = useState<IContact[]>([
-    {
-      id: 1,
-      name: "D.Va",
-      phone: "+32476589746",
-      email: "hana.song@overwatch.com",
-    },
-  ]);
+export default function Contact({ contactProps, onClick }: ContactProps) {
+  const handleDeleteClick = () => {
+    onClick(contactProps.id);
+  };
 
   return (
     <div className="">
@@ -29,7 +24,7 @@ export default function Contact() {
             <span>
               <FontAwesomeIcon icon={faIdBadge} />
             </span>
-            {contacts[0].name}
+            {contactProps.name}
           </p>
         </div>
 
@@ -38,7 +33,7 @@ export default function Contact() {
             <span>
               <FontAwesomeIcon icon={faMobileScreenButton} />
             </span>
-            {contacts[0].phone}
+            {contactProps.phone}
           </p>
         </div>
 
@@ -47,11 +42,15 @@ export default function Contact() {
             <span>
               <FontAwesomeIcon icon={faAt} />
             </span>
-            {contacts[0].email}
+            {contactProps.email}
           </p>
         </div>
 
-        <div className="buttonDelete"></div>
+        <div className="buttonDelete">
+          <button onClick={handleDeleteClick} className="remove">
+            <FontAwesomeIcon icon={faTrashCan} /> Delete
+          </button>
+        </div>
       </div>
     </div>
   );
