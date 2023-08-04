@@ -1,4 +1,63 @@
+@import url("../../node_modules/@picocss/pico");
+
+:root button[type='submit'] {
+    --primary: #dc3545;
+}
+
 body {
     margin: 0;
     padding: 0;
+}
+
+#root {
+    margin-bottom: 120px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(238, 221, 221);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+span {
+    color: #dc3545;
+}
+
+.datas {
+    align-items: center;
+}
+
+.datas p {
+    display: flex;
+}
+
+.datas span {
+    margin-right: 10px;
+}
+
+.buttonDelete {
+    display: flex;
+    justify-content: center;
+}
+
+.remove {
+    width: 60%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1818b4;
+    padding: 1rem;
+}
+
+footer p {
+    text-align: center;
+    font-size: 15px;
+    color: rgb(238, 221, 221);
+    margin: 0;
 }
