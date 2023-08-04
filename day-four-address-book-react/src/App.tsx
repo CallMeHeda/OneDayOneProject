@@ -1,11 +1,21 @@
-import Contact from "./components/Contact";
+import ContactList from "./components/ContactsList";
+import { IContact } from "./interfaces/IContact";
 import "./styles/app.css";
-import React from "react";
+import { useState } from "react";
 
 function App() {
+  const [contacts, setContacts] = useState<IContact[]>([
+    {
+      id: 1,
+      name: "D.Va",
+      phone: "+32476589746",
+      email: "hana.song@overwatch.com",
+    },
+  ]);
+
   return (
     <div className="App">
-      <Contact />
+      <ContactList contacts={contacts} />
     </div>
   );
 }
