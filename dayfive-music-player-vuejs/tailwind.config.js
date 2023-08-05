@@ -5,6 +5,9 @@ export default {
     extend: {
       margin: {
         33: '33rem'
+      },
+      minHeight: {
+        '90vh': '90vh'
       }
     }
   },

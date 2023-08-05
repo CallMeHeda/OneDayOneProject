@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center min-h-screen">
+  <div class="flex flex-col justify-center items-center min-h-90vh">
     <div>
       <img
         ref="coverSong"
