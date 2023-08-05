@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center w-screen h-screen">
+  <div class="flex flex-col justify-center items-center min-h-screen">
     <div>
       <img
         ref="coverSong"
@@ -19,13 +19,13 @@
       </div>
     </div>
 
-    <div class="flex flex-col justify-center w-screen">
+    <div class="flex flex-col items-center justify-center w-screen">
       <audio ref="audioPlayer" :src="currentSong.preview">
         <!-- ❓❓❓🤷🏿‍♀️ <source :src="currentSong.preview" type="audio/mpeg"> NE FONCTIONNE PAS ❓❓❓🤷🏿‍♀️ -->
         <source type="audio/mpeg" />
         Votre navigateur ne prend pas en charge l'élément audio.
       </audio>
-      <div id="progressBar" class="flex justify-center mt-3.5 w-screen">
+      <div id="progressBar" class="flex justify-center mt-3.5 w-4/5 lg:w-1/2">
         <input
           type="range"
           name="progressBar"
@@ -37,8 +37,12 @@
         />
       </div>
       <div class="flex justify-between w-screen mt-1">
-        <span ref="currentTime" class="text-xs text-gray-400 ml-8">{{ currentTime }}</span>
-        <span ref="totalTime" class="text-xs text-gray-400 mr-8">{{ duration }}</span>
+        <span ref="currentTime" class="text-xs text-gray-400 ml-8 -mt-5 lg:ml-33">{{
+          currentTime
+        }}</span>
+        <span ref="totalTime" class="text-xs text-gray-400 mr-8 -mt-5 lg:mr-33">{{
+          duration
+        }}</span>
       </div>
     </div>
 
