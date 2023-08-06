@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 89vh;
+}
+
+swiper-container {
+  width: 250px;
+  height: 340px;
+
+  swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    img {
+      border-radius: 20px;
+    }
+  }
+}

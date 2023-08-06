@@ -7,10 +7,8 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { SwiperModule } from 'swiper/angular';
-
-// import { register } from 'swiper/element/bundle';
-// register();
+import { register } from 'swiper/element/bundle';
+register();
 
 @NgModule({
   declarations: [
@@ -19,7 +17,7 @@ import { SwiperModule } from 'swiper/angular';
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SwiperModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
