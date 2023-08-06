@@ -46,15 +46,19 @@ export class PokemonComponent implements OnInit, AfterViewInit {
         loop: true,
       });
 
-      console.log(swiper.slides);
+      console.log(this.cards);
 
-      this.swiperContainer.nativeElement.addEventListener(
-        'slidechange',
-        (event: Event) => {
-          const beforeLastIndex = swiper.slides.length - 2;
-          console.log(beforeLastIndex, ' ', swiper.slides.length);
-        }
-      );
+      // this.swiperContainer.nativeElement.addEventListener(
+      //   'slidechange',
+      //   (event: Event) => {
+      //     const beforeLastIndex = swiper.slides.length - 2;
+      //     console.log(beforeLastIndex, ' ', swiper.slides.length);
+      //   }
+      // );
     });
   }
+
+  // detect = (e: Event) => {
+  //   console.log(e.target);
+  // };
 }

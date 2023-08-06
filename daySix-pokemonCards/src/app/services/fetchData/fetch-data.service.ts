@@ -9,7 +9,7 @@ export class FetchDataService {
   constructor() {}
 
   async fetchCardsData() {
-    const pageSize = 3;
+    const pageSize = 15;
     const randomPage = Math.floor(Math.random() * (16444 / pageSize));
 
     const options = {
