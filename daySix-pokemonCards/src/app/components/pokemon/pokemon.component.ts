@@ -24,17 +24,37 @@ export class PokemonComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
+    // this.fetchDataService.fetchCardsData().then((cards: any[]) => {
+    //   this.cards = cards;
+    //   this.changeDetector.detectChanges();
+    //   new Swiper(this.swiperContainer.nativeElement, {
+    //     // effect: 'cards',
+    //     // grabCursor: true,
+    //     // loop: true,
+    //   });
+    // });
+  }
+
+  ngAfterViewInit() {
     this.fetchDataService.fetchCardsData().then((cards: any[]) => {
       this.cards = cards;
       this.changeDetector.detectChanges();
 
-      new Swiper(this.swiperContainer.nativeElement, {
-        // effect: 'cards',
-        // grabCursor: true,
-        // loop: true,
+      const swiper = new Swiper(this.swiperContainer.nativeElement, {
+        effect: 'cards',
+        grabCursor: true,
+        loop: true,
       });
+
+      console.log(swiper.slides);
+
+      this.swiperContainer.nativeElement.addEventListener(
+        'slidechange',
+        (event: Event) => {
+          const beforeLastIndex = swiper.slides.length - 2;
+          console.log(beforeLastIndex, ' ', swiper.slides.length);
+        }
+      );
     });
   }
-
-  ngAfterViewInit() {}
 }
