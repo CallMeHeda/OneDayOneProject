@@ -1,24 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 
 function Joke() {
   let [error, setError] = useState();
   const [joke, setJoke] = useState("");
+  const [delivery, setDelivery] = useState("");
   const [cards, setCards] = useState([]);
+  const [lang, setLang] = useState("en");
+  const [type, setType] = useState("single");
 
   useEffect(() => {
     fetchJokes();
-  }, [joke]);
+  }, [lang]);
 
   const fetchJokes = async () => {
-    fetch("https://v2.jokeapi.dev/joke/Any?lang=en&type=single")
+    fetch(`https://v2.jokeapi.dev/joke/Any?lang=${lang}&type=${type}`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setJoke(result.joke);
-          // console.log(result);
-          setCards((prevCards) => [...prevCards, { joke: result.joke }]);
+          if (lang === "en") {
+            setType("single");
+            setJoke(result.joke);
+            // setDelivery("");
+
+            setCards((prevCards) => [...prevCards, { joke: result.joke }]);
+          }
+          if (lang === "fr") {
+            setType("twopart");
+            setJoke(result.setup);
+            setDelivery(result.delivery);
+
+            setCards((prevCards) => [
+              ...prevCards,
+              { joke: result.setup, delivery: result.delivery },
+            ]);
+          }
         },
         (error) => {
           setError(error);
@@ -34,7 +51,7 @@ function Joke() {
           top: 65,
         }}
       >
-        <Text style={styles.text}>Day 8 : Jokes App</Text>
+        <Text style={styles.text}>Day 8 : Jokes App {lang}</Text>
       </View>
 
       <View
@@ -43,11 +60,17 @@ function Joke() {
         }}
       >
         <Swiper
-          cards={cards.map((card) => card.joke)}
-          renderCard={(joke) => {
+          cards={cards.map((card) => {
+            return { joke: card.joke, delivery: card.delivery };
+          })}
+          renderCard={(cardData = { joke, delivery }) => {
             return (
               <View style={styles.card}>
-                <Text style={styles.text}>{joke}</Text>
+                {lang === "en" ? (
+                  <Text style={styles.text}>{cardData.joke}</Text>
+                ) : (
+                  <Text style={styles.text}>{cardData.delivery}</Text>
+                )}
               </View>
             );
           }}
@@ -61,21 +84,19 @@ function Joke() {
           disableBottomSwipe={true}
           style={{ flex: 1 }}
         ></Swiper>
+
+        <View style={styles.englishButton}>
+          <Button title="english" onPress={() => setLang("en")}></Button>
+        </View>
+
+        <View style={styles.frenchButton}>
+          <Button title="french" onPress={() => setLang("fr")}></Button>
+        </View>
       </View>
-
-      {/* <TouchableOpacity style={styles.button}>
-        <Text style={styles.text}>French Jokes</Text>
-      </TouchableOpacity> */}
-
-      {/* <View style={styles.button}>
-        <Button
-          title="Show Answer"
-          onPress={() => console.log("Right button pressed")}
-        />
-      </View> */}
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -102,13 +123,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
   },
-  button: {
+  frenchButton: {
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
     backgroundColor: "#dc3545",
     position: "absolute",
     bottom: 10,
+    width: "50%",
+    padding: 10,
+    borderRadius: 50,
+  },
+
+  englishButton: {
+    flex: 1,
+    justifyContent: "center",
+    alignSelf: "center",
+    backgroundColor: "#dc3545",
+    position: "absolute",
+    top: 10,
     width: "50%",
     padding: 10,
     borderRadius: 50,
