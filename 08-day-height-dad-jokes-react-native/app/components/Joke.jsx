@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
+import CountryFlag from "react-native-country-flag";
 
 function Joke() {
   let [error, setError] = useState();
@@ -55,9 +56,13 @@ function Joke() {
         style={{
           position: "relative",
           top: 65,
+          flexDirection: "row",
+          justifyContent: "center",
         }}
       >
-        <Text style={styles.text}>Day 8 : Jokes App</Text>
+        <Text style={styles.day}>Day 8 :</Text>
+        <Text style={styles.title}> Jokes App</Text>
+        <Text style={styles.day}>.</Text>
       </View>
 
       <View
@@ -89,24 +94,36 @@ function Joke() {
           // disableLeftSwipe={true}
           cardStyle={{ flex: 1 }}
         ></Swiper>
+      </View>
 
-        <View style={styles.englishButton}>
-          <TouchableOpacity
-            style={styles.englishButton}
-            onPress={() => reset("en", "single")}
-          >
-            <Text>English</Text>
-          </TouchableOpacity>
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          top: 555,
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => reset("en", "single")}
+          style={[styles.boxShadow, { borderRadius: 50, width: 60 }]}
+        >
+          <CountryFlag
+            style={[{ borderRadius: 50, width: 60 }]}
+            isoCode="gb"
+            size={60}
+          />
+        </TouchableOpacity>
 
-        <View style={styles.frenchButton}>
-          <TouchableOpacity
-            style={styles.frenchButton}
-            onPress={() => reset("fr", "twopart")}
-          >
-            <Text>French</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          onPress={() => reset("fr", "twopart")}
+          style={[styles.boxShadow, { borderRadius: 50, width: 60 }]}
+        >
+          <CountryFlag
+            style={{ borderRadius: 50, width: 60 }}
+            isoCode="fr"
+            size={60}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -118,14 +135,22 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: "100%",
     height: "100%",
-    borderWidth: 2,
-    borderColor: "green",
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 24,
+    color: "white",
+  },
+  day: {
+    textAlign: "center",
+    fontSize: 24,
+    color: "#cd3545",
   },
   card: {
     flex: 1,
     alignSelf: "center",
-    borderRadius: 50,
-    backgroundColor: "#dc3545",
+    borderRadius: 25,
+    backgroundColor: "#78A1BB",
     borderWidth: 2,
     borderColor: "white",
     justifyContent: "center",
@@ -138,29 +163,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
   },
-  frenchButton: {
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "center",
-    // backgroundColor: "transparent",
-    position: "absolute",
-    top: 250,
-    width: "50%",
-    padding: 10,
-    borderRadius: 50,
-  },
-
-  englishButton: {
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "center",
-    // backgroundColor: "#dc3545",
-    position: "absolute",
-    top: 250,
-    left: 110,
-    width: "50%",
-    padding: 10,
-    borderRadius: 50,
+  boxShadow: {
+    shadowColor: "#bfb7b7",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    elevation: 3,
   },
 });
 
