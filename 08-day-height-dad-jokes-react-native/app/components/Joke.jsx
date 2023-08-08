@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Swiper from "react-native-deck-swiper";
 
-const Test = () => {
+function Joke() {
   let [error, setError] = useState();
   const [joke, setJoke] = useState("");
   const [cards, setCards] = useState([]);
@@ -75,7 +75,7 @@ const Test = () => {
       </View> */}
     </View>
   );
-};
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Test;
+export default Joke;
