@@ -11,25 +11,24 @@ function Joke() {
   const [type, setType] = useState("single");
 
   useEffect(() => {
-    fetchJokes();
+    fetchJokes(lang, type);
   }, [lang]);
 
-  const fetchJokes = async () => {
-    fetch(`https://v2.jokeapi.dev/joke/Any?lang=${lang}&type=${type}`)
+  const fetchJokes = async (lang, type) => {
+    await fetch(`https://v2.jokeapi.dev/joke/Any?lang=${lang}&type=${type}`)
       .then((res) => res.json())
       .then(
         (result) => {
           if (lang === "en") {
-            setType("single");
-            setJoke(result.joke);
-            // setDelivery("");
-
-            setCards((prevCards) => [...prevCards, { joke: result.joke }]);
+            // setJoke(result.joke);
+            setCards((prevCards) => [
+              ...prevCards,
+              { joke: result.joke, delivery: "" },
+            ]);
           }
           if (lang === "fr") {
-            setType("twopart");
-            setJoke(result.setup);
-            setDelivery(result.delivery);
+            // setJoke(result.setup);
+            // setDelivery(result.delivery);
 
             setCards((prevCards) => [
               ...prevCards,
@@ -51,7 +50,7 @@ function Joke() {
           top: 65,
         }}
       >
-        <Text style={styles.text}>Day 8 : Jokes App {lang}</Text>
+        <Text style={styles.text}>Day 8 : Jokes App</Text>
       </View>
 
       <View
@@ -66,17 +65,15 @@ function Joke() {
           renderCard={(cardData = { joke, delivery }) => {
             return (
               <View style={styles.card}>
-                {lang === "en" ? (
-                  <Text style={styles.text}>{cardData.joke}</Text>
-                ) : (
-                  <Text style={styles.text}>{cardData.delivery}</Text>
-                )}
+                <Text style={styles.text}>
+                  {lang === "en"
+                    ? cardData.joke
+                    : `${cardData.joke} ${cardData.delivery}`}
+                </Text>
               </View>
             );
           }}
-          onSwiped={() => {
-            fetchJokes();
-          }}
+          onSwiping={() => fetchJokes(lang, type)}
           cardIndex={0}
           stackSize={3}
           disableRightSwipe={true}
@@ -86,11 +83,17 @@ function Joke() {
         ></Swiper>
 
         <View style={styles.englishButton}>
-          <Button title="english" onPress={() => setLang("en")}></Button>
+          <Button
+            title="english"
+            onPress={() => (setCards([]), setLang("en"), setType("single"))}
+          ></Button>
         </View>
 
         <View style={styles.frenchButton}>
-          <Button title="french" onPress={() => setLang("fr")}></Button>
+          <Button
+            title="french"
+            onPress={() => (setCards([]), setLang("fr"), setType("twopart"))}
+          ></Button>
         </View>
       </View>
     </View>
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#dc3545",
     position: "absolute",
-    bottom: 10,
+    top: 550,
     width: "50%",
     padding: 10,
     borderRadius: 50,
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#dc3545",
     position: "absolute",
-    top: 10,
+    top: 450,
     width: "50%",
     padding: 10,
     borderRadius: 50,
