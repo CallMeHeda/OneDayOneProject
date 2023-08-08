@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 
 function Joke() {
@@ -20,18 +20,15 @@ function Joke() {
       .then(
         (result) => {
           if (lang === "en") {
-            // setJoke(result.joke);
-            setCards((prevCards) => [
-              ...prevCards,
-              { joke: result.joke, delivery: "" },
-            ]);
+            setJoke(result.joke);
+            setCards((prev) => [...prev, { joke: result.joke }]);
           }
           if (lang === "fr") {
-            // setJoke(result.setup);
-            // setDelivery(result.delivery);
+            setJoke(result.setup);
+            setDelivery(result.delivery);
 
-            setCards((prevCards) => [
-              ...prevCards,
+            setCards((prev) => [
+              ...prev,
               { joke: result.setup, delivery: result.delivery },
             ]);
           }
@@ -42,6 +39,16 @@ function Joke() {
       );
   };
 
+  const handleSwipe = () => {
+    fetchJokes(lang, type);
+  };
+
+  const reset = (lang, type) => {
+    setCards([]);
+    setLang(lang);
+    setType(type);
+  };
+
   return (
     <View style={styles.container}>
       <View
@@ -50,7 +57,7 @@ function Joke() {
           top: 65,
         }}
       >
-        <Text style={styles.text}>Day 8 : Jokes App</Text>
+        <Text style={styles.text}>Day 9 : Jokes App {lang}</Text>
       </View>
 
       <View
@@ -59,41 +66,46 @@ function Joke() {
         }}
       >
         <Swiper
-          cards={cards.map((card) => {
-            return { joke: card.joke, delivery: card.delivery };
-          })}
+          cards={cards}
+          cardIndex={0}
           renderCard={(cardData = { joke, delivery }) => {
             return (
               <View style={styles.card}>
                 <Text style={styles.text}>
                   {lang === "en"
                     ? cardData.joke
-                    : `${cardData.joke} ${cardData.delivery}`}
+                    : cardData.joke + " " + cardData.delivery}
                 </Text>
               </View>
             );
           }}
-          onSwiping={() => fetchJokes(lang, type)}
-          cardIndex={0}
+          dragStart={() => {
+            handleSwipe();
+          }}
           stackSize={3}
-          disableRightSwipe={true}
-          disableTopSwipe={true}
-          disableBottomSwipe={true}
-          style={{ flex: 1 }}
+          // disableRightSwipe={true}
+          // disableTopSwipe={true}
+          // disableBottomSwipe={true}
+          // disableLeftSwipe={true}
+          cardStyle={{ flex: 1 }}
         ></Swiper>
 
         <View style={styles.englishButton}>
-          <Button
-            title="english"
-            onPress={() => (setCards([]), setLang("en"), setType("single"))}
-          ></Button>
+          <TouchableOpacity
+            style={styles.englishButton}
+            onPress={() => reset("en", "single")}
+          >
+            <Text>English</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.frenchButton}>
-          <Button
-            title="french"
-            onPress={() => (setCards([]), setLang("fr"), setType("twopart"))}
-          ></Button>
+          <TouchableOpacity
+            style={styles.frenchButton}
+            onPress={() => reset("fr", "twopart")}
+          >
+            <Text>French</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -130,9 +142,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
-    backgroundColor: "#dc3545",
+    // backgroundColor: "transparent",
     position: "absolute",
-    top: 550,
+    top: 250,
     width: "50%",
     padding: 10,
     borderRadius: 50,
@@ -142,9 +154,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
-    backgroundColor: "#dc3545",
+    // backgroundColor: "#dc3545",
     position: "absolute",
-    top: 450,
+    top: 250,
+    left: 110,
     width: "50%",
     padding: 10,
     borderRadius: 50,
