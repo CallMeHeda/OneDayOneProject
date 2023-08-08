@@ -57,7 +57,7 @@ function Joke() {
           top: 65,
         }}
       >
-        <Text style={styles.text}>Day 9 : Jokes App {lang}</Text>
+        <Text style={styles.text}>Day 8 : Jokes App</Text>
       </View>
 
       <View
