@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 .gameboard {
   display: flex;
   justify-content: space-around;
