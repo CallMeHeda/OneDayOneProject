@@ -1,10 +1,34 @@
 <template>
-  <div class="square"></div>
+  <div class="square" @click="handleClick">
+    <div :class="cell"></div>
+  </div>
 </template>
 
 <script lang="ts">
 export default {
-  methods: {},
+  props: ['turnTo', 'cell'],
+  methods: {
+    handleClick(e: MouseEvent) {
+      const target = e.target as Element
+      const firstChild = target.firstChild as Element
+
+      if (firstChild) {
+        const taken =
+          firstChild.classList.contains('circle') || firstChild.classList.contains('cross')
+
+        if (!taken) {
+          if (this.turnTo === 'circle') {
+            firstChild.classList.add('circle')
+            this.$emit('update-turn', 'cross')
+          }
+          if (this.turnTo === 'cross') {
+            firstChild.classList.add('cross')
+            this.$emit('update-turn', 'circle')
+          }
+        }
+      }
+    }
+  },
   computed: {}
 }
 </script>
