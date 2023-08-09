@@ -138,7 +138,7 @@ export default {
 .box {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  //   width: 100vw;
   align-items: center;
 
   .gameboard {

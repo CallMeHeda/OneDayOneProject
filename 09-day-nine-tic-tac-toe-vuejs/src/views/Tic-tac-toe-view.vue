@@ -1,4 +1,6 @@
 <template>
+  <!-- <Header /> -->
+
   <div class="tictactoe">
     <Gameboard />
   </div>
@@ -6,16 +8,16 @@
 
 <script setup lang="ts">
 import Gameboard from '@/components/Gameboard.vue'
+import Header from '@/components/Header.vue'
 </script>
 
 <style scoped lang="scss">
 .tictactoe {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
-  // border: 1px solid red;
+  max-height: 100%;
+  margin-top: 80px;
 }
 </style>
