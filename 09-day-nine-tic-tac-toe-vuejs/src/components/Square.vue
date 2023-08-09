@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-  props: ['id', 'turnTo', 'cells', 'cell'],
+  props: ['id', 'turnTo', 'cells', 'cell', 'winnerMessage'],
   methods: {
     handleClick(e: MouseEvent) {
       const target = e.target as Element
@@ -16,16 +16,18 @@ export default {
         const taken =
           firstChild.classList.contains('circle') || firstChild.classList.contains('cross')
 
-        if (!taken) {
-          if (this.turnTo === 'circle') {
-            firstChild.classList.add('circle')
-            this.handleChange('circle')
-            this.$emit('update-turn', 'cross')
-          }
-          if (this.turnTo === 'cross') {
-            firstChild.classList.add('cross')
-            this.handleChange('cross')
-            this.$emit('update-turn', 'circle')
+        if (!this.winnerMessage) {
+          if (!taken) {
+            if (this.turnTo === 'circle') {
+              firstChild.classList.add('circle')
+              this.handleChange('circle')
+              this.$emit('update-turn', 'cross')
+            }
+            if (this.turnTo === 'cross') {
+              firstChild.classList.add('cross')
+              this.handleChange('cross')
+              this.$emit('update-turn', 'circle')
+            }
           }
         }
       }
