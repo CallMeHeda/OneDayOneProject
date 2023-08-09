@@ -75,7 +75,7 @@ export default {
         let crossWins = combos.every((cell) => this.cells[cell] === 'cross')
 
         if (crossWins) {
-          this.winnerMessage = 'Cross !'
+          this.winnerMessage = 'Cross 🏆'
           this.crossScore++
           this.turnTo = ''
           return
@@ -86,16 +86,26 @@ export default {
         let circleWins = combos.every((cell) => this.cells[cell] === 'circle')
 
         if (circleWins) {
-          this.winnerMessage = 'Circle !'
+          this.winnerMessage = 'Circle 🏆'
           this.circleScore++
           this.turnTo = ''
           return
         }
       })
 
+      if (!this.winnerMessage) {
+        if (this.isGameDraw()) {
+          this.winnerMessage = "It's a draw 🤯"
+          this.turnTo = ''
+        }
+      }
+
       if (this.winnerMessage) {
         this.showModal = true
       }
+    },
+    isGameDraw() {
+      return this.cells.every((cell) => cell !== '')
     },
     reset() {
       this.cells = ['', '', '', '', '', '', '', '', '']
@@ -116,9 +126,6 @@ export default {
       this.winnerMessage = ''
       this.showModal = false
     }
-  },
-  mounted() {
-    console.log(this.cells)
   },
   components: {
     Square,

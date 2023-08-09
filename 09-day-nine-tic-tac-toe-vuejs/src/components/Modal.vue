@@ -10,7 +10,7 @@
           >
         </q-toolbar>
 
-        <q-card-section class="text-h4 text-center">{{ winnerMessage }} 🏆</q-card-section>
+        <q-card-section class="text-h4 text-center">{{ winnerMessage }}</q-card-section>
         <q-btn
           color="red-13"
           label="Start Again"
