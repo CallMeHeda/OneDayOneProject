@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-  props: ['turnTo', 'cell'],
+  props: ['id', 'turnTo', 'cells', 'cell'],
   methods: {
     handleClick(e: MouseEvent) {
       const target = e.target as Element
@@ -19,14 +19,26 @@ export default {
         if (!taken) {
           if (this.turnTo === 'circle') {
             firstChild.classList.add('circle')
+            this.handleChange('circle')
             this.$emit('update-turn', 'cross')
           }
           if (this.turnTo === 'cross') {
             firstChild.classList.add('cross')
+            this.handleChange('cross')
             this.$emit('update-turn', 'circle')
           }
         }
       }
+    },
+    handleChange(className: String) {
+      const onChangeCells = this.cells.map((cell: string, index: number) => {
+        if (index === this.id) {
+          return className
+        } else {
+          return cell
+        }
+      })
+      this.$emit('onChangeCells', onChangeCells)
     }
   },
   computed: {}

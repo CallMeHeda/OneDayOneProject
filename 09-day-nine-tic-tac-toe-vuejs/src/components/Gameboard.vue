@@ -1,7 +1,14 @@
 <template>
   <div class="gameboard">
     <template v-for="(cell, index) of cells" :key="cell.id">
-      <Square :turn-to="turnTo" :cell="cell" @update-turn="updateTurn" />
+      <Square
+        :id="index"
+        :turn-to="turnTo"
+        :cells="cells"
+        :cell="cell"
+        @update-turn="updateTurn"
+        @onChangeCells="onChangeCells"
+      />
     </template>
   </div>
 </template>
@@ -19,7 +26,10 @@ export default {
   methods: {
     updateTurn(newTurn: string) {
       this.turnTo = newTurn
-      console.log(this.turnTo)
+    },
+    onChangeCells(newCells: []) {
+      this.cells = newCells
+      console.log(this.cells)
     }
   },
   components: {
