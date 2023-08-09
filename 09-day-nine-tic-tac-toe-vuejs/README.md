@@ -19,3 +19,5 @@
 # Video
 
 https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ce6ffdd5-6a2a-4b2c-a9c1-eadd31de0fbd
+
+# Inspired by @kubowania
