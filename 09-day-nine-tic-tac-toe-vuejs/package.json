@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "quasar": "^2.12.4",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "vue": "^3.3.4",

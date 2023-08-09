@@ -25,16 +25,19 @@
         <p>{{ crossScore }}</p>
       </div>
     </div>
-
-    <div>{{ winnerMessage || turnTo }}</div>
-    <div>
-      <button @click="reset">Start Again</button>
-    </div>
   </div>
+
+  <Modal
+    :winnerMessage="winnerMessage"
+    :showModal="showModal"
+    v-if="winnerMessage"
+    @reset="reset"
+  />
 </template>
 
 <script lang="ts">
 import Square from '@/components/Square.vue'
+import Modal from './Modal.vue'
 
 export default {
   data() {
@@ -44,7 +47,8 @@ export default {
       winnerMessage: '',
       winningCombos: [[0]],
       circleScore: 0,
-      crossScore: 0
+      crossScore: 0,
+      showModal: false
     }
   },
   methods: {
@@ -71,7 +75,7 @@ export default {
         let crossWins = combos.every((cell) => this.cells[cell] === 'cross')
 
         if (crossWins) {
-          this.winnerMessage = 'Cross Wins !'
+          this.winnerMessage = 'Cross !'
           this.crossScore++
           this.turnTo = ''
           return
@@ -82,12 +86,16 @@ export default {
         let circleWins = combos.every((cell) => this.cells[cell] === 'circle')
 
         if (circleWins) {
-          this.winnerMessage = 'Circle Wins !'
+          this.winnerMessage = 'Circle !'
           this.circleScore++
           this.turnTo = ''
           return
         }
       })
+
+      if (this.winnerMessage) {
+        this.showModal = true
+      }
     },
     reset() {
       this.cells = ['', '', '', '', '', '', '', '', '']
@@ -106,10 +114,15 @@ export default {
         }
       }
       this.winnerMessage = ''
+      this.showModal = false
     }
   },
+  mounted() {
+    console.log(this.cells)
+  },
   components: {
-    Square
+    Square,
+    Modal
   }
 }
 </script>
@@ -126,8 +139,6 @@ export default {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    border: 1px solid whitesmoke;
-    background-color: $bg;
     width: 600px;
     height: 600px;
   }
@@ -135,18 +146,15 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 20%;
     align-self: flex-start;
     padding-left: 40px;
-
-    height: 100%;
     .circleScore,
     .crossScore {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 5px;
       &:first-child {
-        padding: 0 6px;
         border-right: 1px solid white;
         min-height: 100%;
       }

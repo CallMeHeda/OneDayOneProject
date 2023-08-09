@@ -51,9 +51,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 198px;
-  height: 198px;
+  width: 200px;
+  height: 200px;
   border: 1px solid whitesmoke;
+
   .circle {
     border-radius: 50%;
     width: 150px;
