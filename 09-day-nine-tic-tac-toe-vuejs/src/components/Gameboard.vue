@@ -27,6 +27,9 @@
     </div>
 
     <div>{{ winnerMessage || turnTo }}</div>
+    <div>
+      <button @click="reset">Start Again</button>
+    </div>
   </div>
 </template>
 
@@ -85,6 +88,24 @@ export default {
           return
         }
       })
+    },
+    reset() {
+      this.cells = ['', '', '', '', '', '', '', '', '']
+      if (this.winnerMessage === 'Cross Wins !') {
+        this.turnTo = 'cross'
+      }
+      if (this.winnerMessage === 'Circle Wins !') {
+        this.turnTo = 'circle'
+      }
+      if (this.winnerMessage === '') {
+        const random = Math.floor(Math.random() * 2)
+        if (random == 0) {
+          this.turnTo = 'cross'
+        } else {
+          this.turnTo = 'circle'
+        }
+      }
+      this.winnerMessage = ''
     }
   },
   components: {

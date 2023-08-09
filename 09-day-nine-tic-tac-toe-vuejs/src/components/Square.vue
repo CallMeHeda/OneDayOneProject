@@ -42,8 +42,7 @@ export default {
       })
       this.$emit('onChangeCells', onChangeCells)
     }
-  },
-  computed: {}
+  }
 }
 </script>
 
