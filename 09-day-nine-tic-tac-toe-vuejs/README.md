@@ -1,46 +1,21 @@
-# 09-day-nine-tic-tac-toe-vuejs
+[![My Skills](https://skillicons.dev/icons?i=vue,vite,ts,sass)](https://skillicons.dev)
 
-This template should help get you started developing with Vue 3 in Vite.
+# Preview
 
-## Recommended IDE Setup
+![Capture d’écran (361)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/4d7f1442-307d-4c4b-9e8a-be6a02e4468b)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Circle Wins
 
-## Type Support for `.vue` Imports in TS
+![Capture d’écran (362)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/7618f3b5-8000-4d19-8f59-60d5421c2209)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+# Cross Wins
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+![Capture d’écran (363)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/03e92eb6-aabe-4031-8dd3-7c8bc323252f)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+# Draw
 
-## Customize configuration
+![Capture d’écran (364)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/5e14e01e-4f9c-4fb3-b149-f7afa6508560)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# Video
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ce6ffdd5-6a2a-4b2c-a9c1-eadd31de0fbd
