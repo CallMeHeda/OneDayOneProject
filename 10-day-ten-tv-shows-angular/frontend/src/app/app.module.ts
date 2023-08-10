@@ -9,9 +9,10 @@ import { CardSeriesComponent } from './components/card-series/card-series.compon
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { TvShowsDetailsComponent } from './components/tv-shows-details/tv-shows-details.component';
 
 @NgModule({
-  declarations: [AppComponent, TvShowsComponent, CardSeriesComponent],
+  declarations: [AppComponent, TvShowsComponent, CardSeriesComponent, TvShowsDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

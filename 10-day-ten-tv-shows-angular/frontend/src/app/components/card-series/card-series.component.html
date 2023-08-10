@@ -1,5 +1,5 @@
 <div class="cardBox">
-    <a href="#">
+    <a [routerLink]="'details/' + serie.id">
         <mat-card class="card" [@zoomIn]="cardState" (mouseenter)="cardState = 'mouseenter'"
             (mouseleave)="cardState = 'mouseleave'">
 

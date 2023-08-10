@@ -16,13 +16,13 @@ export class TvShowsComponent implements OnInit {
   }
 
   async fetchTopRatedTv() {
-    const OPTIONS = {
+    const options = {
       method: 'GET',
       url: 'http://localhost:3000/',
     };
 
     try {
-      const response = await axios.request(OPTIONS);
+      const response = await axios.request(options);
       const series = response.data;
 
       this.tvShows = series.map((data: ITvShows) => {
@@ -35,8 +35,6 @@ export class TvShowsComponent implements OnInit {
           vote_average: data.vote_average,
         };
       });
-
-      console.log(this.tvShows);
     } catch (error) {
       console.log(error);
       throw error;

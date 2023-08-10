@@ -9,9 +9,10 @@ const url = process.env.URL;
 
 app.get("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
+
   const options = {
     method: "GET",
-    url: url,
+    url: `${url}top_rated`,
     headers: {
       accept: "application/json",
       Authorization: auth,
@@ -21,6 +22,27 @@ app.get("/", async (req, res) => {
   try {
     const response = await axios(options);
     res.send(response.data.results);
+  } catch (error) {
+    res.status(500).json({ error: "Erreur lors de la requête Axios" });
+  }
+});
+
+app.get("/details/:id", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  let q = req.params.id;
+  const options = {
+    method: "GET",
+    url: `${url}${q}`,
+    headers: {
+      accept: "application/json",
+      Authorization: auth,
+    },
+  };
+
+  try {
+    const response = await axios(options);
+    res.send(response.data);
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de la requête Axios" });
   }
