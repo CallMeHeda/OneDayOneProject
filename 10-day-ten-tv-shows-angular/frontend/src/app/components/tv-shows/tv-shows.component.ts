@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { ITvShows } from 'src/app/interfaces/itv-shows';
 
 @Component({
   selector: 'app-tv-shows',
@@ -7,6 +8,7 @@ import axios from 'axios';
   styleUrls: ['./tv-shows.component.scss'],
 })
 export class TvShowsComponent implements OnInit {
+  tvShows: ITvShows[] = [];
   constructor() {}
 
   ngOnInit(): void {
@@ -23,7 +25,18 @@ export class TvShowsComponent implements OnInit {
       const response = await axios.request(OPTIONS);
       const series = response.data;
 
-      console.log(series);
+      this.tvShows = series.map((data: ITvShows) => {
+        return {
+          id: data.id,
+          name: data.name,
+          first_air_date: data.first_air_date,
+          overview: data.overview,
+          poster_path: 'https://image.tmdb.org/t/p/original' + data.poster_path,
+          vote_average: data.vote_average,
+        };
+      });
+
+      console.log(this.tvShows);
     } catch (error) {
       console.log(error);
       throw error;

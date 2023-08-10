@@ -1,0 +1,21 @@
+.cardBox {
+  margin: 10px;
+}
+.cardBox a {
+  text-decoration: none;
+}
+.cardBox .card {
+  max-width: 200px;
+}
+.cardBox .card .content {
+  margin-left: -2px;
+}
+.cardBox .card .content .title {
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cardBox .card .content .subtitle {
+  font-size: 12px;
+}/*# sourceMappingURL=card-series.component.css.map */

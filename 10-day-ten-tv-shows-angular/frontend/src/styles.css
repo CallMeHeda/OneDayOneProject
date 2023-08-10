@@ -1,6 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-$bg: #2b2a33;
-
 :root {
   --maxPrimaryPageWidth: 1400px;
   --imageBorderRadius: 8px;
@@ -16,9 +14,10 @@ html,
 body {
   height: 100%;
 }
+
 body {
-  background-color: $bg;
+  background-color: #2b2a33;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: rgba(255, 255, 255, 0.827);
-}
+}/*# sourceMappingURL=styles.css.map */

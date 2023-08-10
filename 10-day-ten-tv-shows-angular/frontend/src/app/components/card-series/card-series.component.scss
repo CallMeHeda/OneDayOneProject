@@ -1,0 +1,21 @@
+.cardBox {
+  margin: 10px;
+  a {
+    text-decoration: none;
+  }
+  .card {
+    max-width: 200px;
+    .content {
+      margin-left: -2px;
+      .title {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .subtitle {
+        font-size: 12px;
+      }
+    }
+  }
+}

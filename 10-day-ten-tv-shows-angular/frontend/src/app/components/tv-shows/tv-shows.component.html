@@ -1,1 +1,7 @@
-<p>tv-shows works!</p>
+<h1><span>Day 10 :</span> TV Shows<span>.</span></h1>
+
+<div class="series">
+    <div *ngFor="let serie of tvShows">
+        <app-card-series [serie]="serie" class="cards"></app-card-series>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="cardBox">
+    <a href="#">
+        <mat-card class="card" [@zoomIn]="cardState" (mouseenter)="cardState = 'mouseenter'"
+            (mouseleave)="cardState = 'mouseleave'">
+
+            <img mat-card-image [src]="serie.poster_path" [alt]="serie.name">
+            <mat-card-content class="content">
+                <mat-card-title class="title">{{ serie.name }}</mat-card-title>
+                <mat-card-subtitle class="subtitle">Original release : {{ serie.first_air_date }}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+    </a>
+</div>
