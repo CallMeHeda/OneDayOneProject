@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { CardActorsComponent } from './components/card-actors/card-actors.component';
 import { ActorsComponent } from './components/actors/actors.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ActorsComponent } from './components/actors/actors.component';
     TvShowsDetailsComponent,
     CardActorsComponent,
     ActorsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

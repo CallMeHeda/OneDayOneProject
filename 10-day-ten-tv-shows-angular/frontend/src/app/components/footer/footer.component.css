@@ -1,0 +1,13 @@
+footer {
+  background-color: rgba(26, 24, 24, 0.7058823529);
+  padding: 1rem;
+}
+footer p {
+  text-align: right;
+  font-size: 15px;
+  color: rgb(238, 221, 221);
+  margin: 0;
+}
+footer p span {
+  color: #dc3545;
+}/*# sourceMappingURL=footer.component.css.map */
