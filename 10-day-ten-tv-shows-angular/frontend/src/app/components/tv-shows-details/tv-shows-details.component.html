@@ -1,1 +1,72 @@
-<p>tv-shows-details works!</p>
+<div class="header"
+    [ngStyle]="{ 'background-image': tvShowsDetails.backdrop_path ? 'url(' + tvShowsDetails.backdrop_path + ')' : '' }">
+    <div class="header_custom_bg">
+        <div class="header_datas">
+            <div class="original_header">
+                <div class="poster_serie">
+                    <div class="poster">
+                        <div class="image"><img [src]="tvShowsDetails.poster_path" [alt]="tvShowsDetails.name"></div>
+                        <div class="broadcast">
+                            <div class="text_wrapper">
+                                <div class="channel_datas">
+                                    <div class="channel_logo" *ngIf="tvShowsDetails.networks">
+                                        <img [src]="tvShowsDetails.networks[0].logo_path"
+                                            [alt]="tvShowsDetails.networks[0].name" height="30">
+                                    </div>
+                                    <div class="channel_name" *ngIf="tvShowsDetails.networks">
+                                        <span>
+                                            <h4>Broadcast on</h4>
+                                            <h3>{{ tvShowsDetails.networks[0].name }}</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header_text_datas">
+                    <div class="text_datas">
+                        <div class="title">
+                            <h2>{{ tvShowsDetails.name }} <span>({{ tvShowsDetails.first_air_date | date :
+                                    "yyyy"}})</span></h2>
+                            <div class="category">
+                                <span *ngFor="let cat of tvShowsDetails.genres">| {{ cat.name }} |</span>
+                            </div>
+                        </div>
+
+                        <div class="popularity">
+                            <div class="chart">
+                                <div class="details_chart">
+                                    <div class="outer_rings">
+                                        <mat-progress-spinner [diameter]="customDiameter" [color]="color" [mode]="mode"
+                                            [value]="value">
+                                        </mat-progress-spinner>
+                                        <div class="percent">
+                                            <span>{{ value }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header_infos">
+                            <h3 class="tagline" *ngIf="tvShowsDetails.tagline">{{ tvShowsDetails.tagline }}</h3>
+                            <h3 *ngIf="tvShowsDetails.overview">Synopsis</h3>
+                            <div class="overview" *ngIf="tvShowsDetails.overview">
+                                <p>{{ tvShowsDetails.overview }}</p>
+                            </div>
+
+                            <ol class="creators">
+                                <li class="infos" *ngFor="let creator of tvShowsDetails.created_by">
+                                    <p>{{ creator.name }}</p>
+                                    <p>Creator</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
