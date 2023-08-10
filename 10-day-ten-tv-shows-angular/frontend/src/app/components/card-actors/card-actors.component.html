@@ -1,0 +1,10 @@
+<div class="cardBox">
+    <mat-card class="card" *ngIf="actor.profile_path">
+        <img mat-card-image [src]="'https://image.tmdb.org/t/p/original' + actor.profile_path" [alt]="actor.name">
+        <mat-card-content class="content">
+            <mat-card-title class="title">{{ actor.name }}</mat-card-title>
+            <mat-card-subtitle class="subtitle">{{ actor.roles[0].character }}</mat-card-subtitle>
+            <p>{{ actor.roles[0].episode_count }} episodes</p>
+        </mat-card-content>
+    </mat-card>
+</div>

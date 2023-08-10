@@ -48,6 +48,27 @@ app.get("/details/:id", async (req, res) => {
   }
 });
 
+app.get("/details/:id/aggregate_credits", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  let q = req.params.id;
+  const options = {
+    method: "GET",
+    url: `${url}${q}/aggregate_credits`,
+    headers: {
+      accept: "application/json",
+      Authorization: auth,
+    },
+  };
+
+  try {
+    const response = await axios(options);
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).json({ error: "Erreur lors de la requête Axios" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
