@@ -1,3 +1,5 @@
+[![My Skills](https://skillicons.dev/icons?i=react,ts)](https://skillicons.dev)
+
 # Preview
 
 ![Capture d’écran (346)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/82053636-7f44-479d-980f-146bef276101)
