@@ -15,7 +15,6 @@ export default function NewTodo({ handleAdd }: INewTodo) {
     const todoToAdd = { id: new Date().getTime(), todo: addTodo };
     if (todoToAdd.todo !== "") {
       handleAdd(todoToAdd);
-      console.log(todoToAdd);
     }
     setAddTodo("");
   };

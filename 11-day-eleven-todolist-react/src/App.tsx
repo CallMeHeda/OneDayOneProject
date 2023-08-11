@@ -4,6 +4,9 @@ import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Todo from "./components/Todo";
 import { ITodo } from "./interfaces/ITodo";
+import Todos from "./components/Todos";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -22,19 +25,10 @@ function App() {
 
   return (
     <div>
-      <h1>ToList</h1>
+      <Header />
       <NewTodo handleAdd={handleAddTodo} />
-      <ul>
-        {todos.map((todo) => {
-          return (
-            <Todo
-              key={todo.id}
-              todoProps={todo}
-              onClick={() => handleDelete(todo.id)}
-            />
-          );
-        })}
-      </ul>
+      <Todos todos={todos} handleDelete={handleDelete} />
+      <Footer />
     </div>
   );
 }
