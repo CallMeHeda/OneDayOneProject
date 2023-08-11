@@ -1,8 +1,13 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { INewTodo } from "../interfaces/INewTodo";
+import Form from "./Form";
 
 export default function NewTodo({ handleAdd }: INewTodo) {
   const [addTodo, setAddTodo] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddTodo(e.target.value);
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -10,25 +15,16 @@ export default function NewTodo({ handleAdd }: INewTodo) {
     const todoToAdd = { id: new Date().getTime(), todo: addTodo };
     if (todoToAdd.todo !== "") {
       handleAdd(todoToAdd);
+      console.log(todoToAdd);
     }
     setAddTodo("");
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setAddTodo(e.target.value);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="todo"
-        id="inputTodo"
-        placeholder="Ajouter une tache"
-        value={addTodo}
-        onChange={handleChange}
-      />
-      <button>Ajouter</button>
-    </form>
+    <Form
+      handleSubmit={handleSubmit}
+      addTodo={addTodo}
+      handleChange={handleChange}
+    />
   );
 }

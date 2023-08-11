@@ -1,14 +1,13 @@
+import "./assets/app.css";
+
 import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import Todo from "./components/Todo";
 import { ITodo } from "./interfaces/ITodo";
-// import Todo from "./compenents/Todo";
 
 function App() {
-  // state
   const [todos, setTodos] = useState<ITodo[]>([]);
 
-  // comportements
   const handleDelete = (id: number) => {
     const todosCopy = [...todos];
     const todosCopyUpdated = todosCopy.filter((todo) => todo.id !== id);
