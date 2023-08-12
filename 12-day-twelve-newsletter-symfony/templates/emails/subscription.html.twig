@@ -1,0 +1,6 @@
+<h1>Your Inscription</h1>
+<p>You are subscribed to the newsletter.</p>
+<p>
+	Click on the link to
+	<a href="{{ absolute_url(path('confirm', {id: user.id, token: token})) }}">Confirm</a>
+</p>
