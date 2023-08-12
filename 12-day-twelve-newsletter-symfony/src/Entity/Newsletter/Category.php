@@ -21,9 +21,13 @@ class Category
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'categories')]
     private Collection $user;
 
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Newsletter::class, orphanRemoval: true)]
+    private Collection $newsletters;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
+        $this->newsletters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,5 +74,34 @@ class Category
         return $this;
     }
 
+    /**
+     * @return Collection<int, Newsletter>
+     */
+    public function getNewsletters(): Collection
+    {
+        return $this->newsletters;
+    }
+
+    public function addNewsletter(Newsletter $newsletter): static
+    {
+        if (!$this->newsletters->contains($newsletter)) {
+            $this->newsletters->add($newsletter);
+            $newsletter->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewsletter(Newsletter $newsletter): static
+    {
+        if ($this->newsletters->removeElement($newsletter)) {
+            // set the owning side to null (unless already changed)
+            if ($newsletter->getCategory() === $this) {
+                $newsletter->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
 }
 
