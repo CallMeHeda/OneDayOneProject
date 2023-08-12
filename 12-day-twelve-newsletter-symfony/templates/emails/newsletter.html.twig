@@ -1,0 +1,11 @@
+<h1>{{newsletter.name}}</h1>
+
+<div>
+	{{newsletter.content|raw}}
+</div>
+
+<p>To unsubscribe click on this link
+	<a href="{{ absolute_url(path('unsubscribe', {id: user.id, newsletter:newsletter.id, token: user.validationToken})) }}">
+		{{ absolute_url(path('unsubscribe', {id: user.id, newsletter:newsletter.id, token: user.validationToken})) }}
+	</a>
+</p>

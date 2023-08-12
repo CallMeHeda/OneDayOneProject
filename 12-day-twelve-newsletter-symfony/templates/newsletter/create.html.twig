@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add newsletter
+{% endblock %}
+
+{% block body %}
+	<h1>Add a new newsletter</h1>
+	{{form_start(form)}}
+	{{form_row(form.name)}}
+	<p>Content</p>
+	<div id="editor"></div>
+	{{ form_row(form.content, {'ckeditor': true}) }}
+	{{form_row(form.category)}}
+	{{form_end(form)}}
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('ckeditor5/ckeditor.js') }}" defer></script>
+	<script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
+{% endblock %}

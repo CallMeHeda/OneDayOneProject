@@ -5,8 +5,19 @@
 
 {% block body %}
 
+	<header>
+		<h1>
+			<span>Day 12 :</span>&nbsp;Newsletter<span>.</span>
+		</h1>
+	</header>
+
+	<nav class="nav">
+		<a href=" {{ absolute_url(path('app_newsletter')) }} ">Newsletter</a>
+	</nav>
+
 	{% for message in app.flashes('message') %}
 		<div>{{ message }}</div>
 	{% endfor %}
+
 
 {% endblock %}

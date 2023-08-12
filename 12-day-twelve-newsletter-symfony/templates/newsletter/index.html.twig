@@ -1,8 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Newsletters
+{% block title %}
+	Newsletters
 {% endblock %}
 
 {% block body %}
-	<h1>Newsletters</h1>
-	{{form(form)}}{% endblock %}
+	<h1 class="newsTitle">Newsletters</h1>
+	<div class="newsletterForm">
+		{{ form_start(form) }}
+
+		{{ form_row(form.email) }}
+		{{ form_row(form.categories) }}
+
+		<div class="rgpd">
+			{{ form_widget(form.is_rgpd) }}
+			{{ form_label(form.is_rgpd) }}
+			{{ form_errors(form.is_rgpd) }}
+		</div>
+
+		{{ form_rest(form) }}
+
+		{{ form_end(form) }}
+	</div>
+
+{% endblock %}
