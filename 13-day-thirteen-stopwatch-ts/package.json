@@ -1,0 +1,17 @@
+{
+  "name": "13-day-thirteen-stopwatch-ts",
+  "version": "1.0.0",
+  "description": "challenge: day 13 stopwatch",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Fatima EL-AMRI",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}
