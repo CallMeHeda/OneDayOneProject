@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(42, 41, 41);
+}
+
+h1 {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(238, 221, 221);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+h1 span,
+footer span {
+    color: #dc3545;
+}
+
+.clockBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#clock {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    background-color: #dc35467a;
+    border-radius: 1%;
+    font-size: 100px;
+    color: rgb(238, 221, 221);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* BTN STYLE BY Nikolas : https://uiverse.io/nikk7007/blue-mayfly-40 */
+.btn {
+    display: flex;
+    justify-content: center;
+    border: none;
+    --color: #dc35467a;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 500;
+    font-size: 18px;
+    /* border: 1px solid; */
+    font-family: inherit;
+    text-transform: uppercase;
+    color: #dc3545;
+    z-index: 1;
+    margin: 10px;
+    letter-spacing: 1px;
+}
+
+.btn::before,
+.btn::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.btn::before {
+    top: -1em;
+    left: -1em;
+}
+
+.btn::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.btn:hover::before,
+.btn:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.btn:hover {
+    color: rgb(238, 221, 221);
+}
+
+.btn:active {
+    filter: brightness(.8);
+}
+
+/* BTN STYLE BY Nikolas : https://uiverse.io/nikk7007/blue-mayfly-40 */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+footer p {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(238, 221, 221);
+}
