@@ -1,0 +1,136 @@
+:host {
+  display: flex;
+  justify-content: center;
+  min-height: 89vh;
+}
+
+.container {
+  margin-top: 30px;
+  .pokeBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+
+    .slogan {
+      display: flex;
+      justify-content: center;
+      color: #c0c0c0;
+      letter-spacing: 1px;
+    }
+
+    .question {
+      color: #c0c0c0;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      font-size: 20px;
+      span {
+        color: #cd3545;
+      }
+    }
+    .score {
+      position: absolute;
+      top: 26%;
+      left: 58%;
+      color: #c0c0c0;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .quizz {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      .pokemon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 220px;
+        height: 285px;
+        border-radius: 30px;
+        background: #333030;
+        box-shadow: 15px 15px 30px #221f1f, -15px -15px 30px #241f1f;
+        h3 {
+          color: #f5d6d9;
+        }
+        img {
+          width: 200px;
+        }
+
+        // POKEBALL LAODER BY TEMANI AFIF => https://codepen.io/t_afif/pen/wvJewNO
+        .wobbling-10 {
+          height: 60px;
+          width: 60px;
+          position: relative;
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            transform-origin: bottom;
+          }
+          &::after {
+            background: radial-gradient(at 75% 15%, #fffb, #0000 35%),
+              radial-gradient(at 80% 40%, #0000, #0008),
+              radial-gradient(circle 5px, #fff 94%, #0000),
+              radial-gradient(circle 10px, #000 94%, #0000),
+              linear-gradient(#f93318 0 0) top / 100% calc(50% - 5px),
+              linear-gradient(#fff 0 0) bottom/100% calc(50% - 5px) #000;
+            background-repeat: no-repeat;
+            animation: w10 1s infinite cubic-bezier(0.5, 120, 0.5, -120);
+          }
+          &::before {
+            background: #ddd;
+            filter: blur(30px);
+            transform: scaleY(0.4) translate(-13px, 0px);
+          }
+        }
+
+        @keyframes w10 {
+          30%,
+          70% {
+            transform: rotate(0deg);
+          }
+          49.99% {
+            transform: rotate(0.2deg);
+          }
+          50% {
+            transform: rotate(-0.2deg);
+          }
+        }
+        // POKEBALL LAODER BY TEMANI AFIF => https://codepen.io/t_afif/pen/wvJewNO
+      }
+
+      .pokeNames {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+        .option {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+          background-color: #8f222d;
+          padding: 5px 35px;
+          cursor: pointer;
+          p {
+            color: #f5d6d9;
+            font-size: 16px;
+            // padding: 0 5px;
+            // margin: 5px;
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

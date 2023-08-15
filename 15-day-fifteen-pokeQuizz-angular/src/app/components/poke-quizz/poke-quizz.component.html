@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="pokeBox" *ngIf="questionNumber <= 10">
+        <div class="slogan">
+            <h1>Gotta catch 'em all!</h1>
+        </div>
+        <p class="question"> <span>{{questionNumber}}/10</span> What Pokémon is this?</p>
+        <span class="score">Score : {{score}}/10</span>
+        <div class="quizz">
+            <div class="pokemon" *ngIf="!isLoading && pokemon">
+                <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+            </div>
+            <div class="pokemon" *ngIf="isLoading">
+                <div class="wobbling-10"></div>
+            </div>
+
+            <div class="pokeNames" *ngIf="pokemon.name">
+                <div class="option" *ngFor="let shuffleName of shuffleNames"
+                    (click)="submitAnswer(shuffleName, pokemon.name)">
+                    <p class="name">{{shuffleName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card flex justify-content-center">
+        <!-- <p-button (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
+        <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '30vw'}" [draggable]="false"
+            [resizable]="false" [modal]="true">
+            <ng-template pTemplate="header">
+                <span class="text-xl font-bold">Gotta catch 'em all!</span>
+            </ng-template>
+            <p *ngIf="score < 6">
+                The quizz is over. Your score is {{score}} ❌
+            </p>
+            <p *ngIf="score >= 6">
+                The quizz is over. Your score is {{score}} ✔
+            </p>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="reset()" label="Try again" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>
