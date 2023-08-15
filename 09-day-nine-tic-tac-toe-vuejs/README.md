@@ -1,5 +1,7 @@
 [![My Skills](https://skillicons.dev/icons?i=vue,vite,ts,sass)](https://skillicons.dev)
 
+### Inspired by @kubowania
+
 # Preview
 
 ![Capture d’écran (361)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/4d7f1442-307d-4c4b-9e8a-be6a02e4468b)
@@ -19,5 +21,3 @@
 # Video
 
 https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ce6ffdd5-6a2a-4b2c-a9c1-eadd31de0fbd
-
-# Inspired by @kubowania

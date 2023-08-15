@@ -1,27 +1,11 @@
-# 15DayFifteenPokeQuizzAngular
+[![My Skills](https://skillicons.dev/icons?i=angular)](https://skillicons.dev)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+# previews
 
-## Development server
+https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/db32eac9-5e64-40de-82a4-129870c50337
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Capture d’écran (396)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/0e264d86-5d20-4694-8242-2343141a82a8)
+![Capture d’écran (397)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/0719ae6d-40f2-41ba-bed9-3e1941f1242a)
+![Capture d’écran (398)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/e7088a27-8da2-418e-ba98-d0796b0b6b8e)
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Pokéball Loader BY TEMANI AFIF => https://codepen.io/t_afif/pen/wvJewNO
