@@ -1,4 +1,5 @@
 import { View, TouchableOpacity, StyleSheet } from "react-native";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 import Animated, {
   useSharedValue,
@@ -6,6 +7,7 @@ import Animated, {
   withTiming,
   Easing,
 } from "react-native-reanimated";
+import { useEffect } from "react";
 
 export default function Card({
   card,
@@ -18,7 +20,27 @@ export default function Card({
   identicalCards,
   checkFlippedImages,
   isCardSelected,
+  shuffledImages,
 }) {
+  useEffect(() => {
+    // if (shuffledImages.length === 34 || shuffledImages.length === 76) {
+    //   ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+    // } else {
+    //   ScreenOrientation.unlockAsync();
+    // }
+    changeScreenOrientation();
+  }, [shuffledImages]);
+
+  async function changeScreenOrientation() {
+    if (shuffledImages.length === 34 || shuffledImages.length === 76) {
+      await ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.LANDSCAPE
+      );
+    } else {
+      await ScreenOrientation.unlockAsync();
+    }
+  }
+
   const animatedValue = useSharedValue(0);
 
   const frontCardStyle = useAnimatedStyle(() => {
@@ -42,9 +64,30 @@ export default function Card({
     });
   };
 
+  const getCardStyle = () => {
+    // DAMAGES STYLE
+    if (shuffledImages.length === 34) {
+      return {
+        ...styles.container,
+        width: 70,
+        height: 70,
+      };
+    }
+    // SUPPORTS CARD STYLE
+    if (shuffledImages.length === 20) {
+      return {
+        ...styles.container,
+        width: 85,
+        height: 85,
+      };
+    }
+
+    return styles.container;
+  };
+
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={getCardStyle()}
       onPress={() => {
         if (!identicalCards.includes(card)) {
           flipCard();

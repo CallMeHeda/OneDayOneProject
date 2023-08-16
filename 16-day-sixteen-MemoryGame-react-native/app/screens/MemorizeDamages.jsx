@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
-import { supports } from "../utils/heroes";
+import { damages } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
 
-function MemorizeSupports() {
+function MemorizeDamages() {
   const [shuffledImages, setShuffledImages] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
   const [selectedCardsId, setSelectedCardsId] = useState([]);
   const [identicalCards, setIdenticalCards] = useState([]);
 
   useEffect(() => {
-    utils.shuffleCards(supports, setShuffledImages);
+    utils.shuffleCards(damages, setShuffledImages);
   }, []);
 
   return (
@@ -37,17 +37,18 @@ function MemorizeSupports() {
     </View>
   );
 }
-export default MemorizeSupports;
+export default MemorizeDamages;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
+    alignContent: "flex-end",
     justifyContent: "center",
-    alignContent: "center",
-    // width: "100%",
-    // borderWidth: 1,
+    padding: 15,
+    // borderWidth: 2,
     // borderColor: "white",
+    // marginTop: 30,
   },
 });
