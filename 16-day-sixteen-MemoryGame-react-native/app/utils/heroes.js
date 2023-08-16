@@ -110,7 +110,7 @@ export const supports = [
     name: "Zenyatta",
     image: require("../../assets/images/support/zenyatta.png"),
   },
-]; // 9 images
+]; // 10 images
 
 export const tanks = [
   {
@@ -314,4 +314,4 @@ export const all = [
     name: "Zarya",
     image: require("../../assets/images/tank/zarya.png"),
   },
-]
+]; // 38 images

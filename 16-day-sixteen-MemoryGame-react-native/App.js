@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MemorizeSupports from "./app/screens/MemorizeSupports";
 
 export default function App() {
