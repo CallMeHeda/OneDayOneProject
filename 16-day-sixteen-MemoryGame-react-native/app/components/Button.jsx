@@ -1,10 +1,19 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-function Button() {
+function Button({ Role, route }) {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate(route);
+  };
+
   return (
-    <Pressable onPress={() => console.log("hello")} style={styles.button}>
-      <Text>I'm pressable!</Text>
-    </Pressable>
+    <View>
+      <Pressable onPress={handlePress} style={styles.button}>
+        <Role width={100} height={100} />
+      </Pressable>
+    </View>
   );
 }
 
@@ -13,10 +22,7 @@ export default Button;
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    // borderWidth: 2,
     borderRadius: 50,
-    width: 150,
-    padding: 25,
     backgroundColor: "#cd3545",
   },
 });
