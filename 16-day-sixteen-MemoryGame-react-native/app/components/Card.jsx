@@ -81,6 +81,22 @@ export default function Card({
         height: 85,
       };
     }
+    // TANKS CARD STYLE
+    if (shuffledImages.length === 22) {
+      return {
+        ...styles.container,
+        width: 80,
+        height: 80,
+      };
+    }
+    // ALL CHARACTERS CARDS STYLE
+    if (shuffledImages.length === 76) {
+      return {
+        ...styles.container,
+        width: 50,
+        height: 50,
+      };
+    }
 
     return styles.container;
   };
