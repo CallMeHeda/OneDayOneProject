@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { supports } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
@@ -15,8 +15,9 @@ function MemorizeSupports() {
   }, []);
 
   return (
-    <View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <Text style={styles.text}>Memorize Supports</Text>
+      <View style={styles.cards}>
         {shuffledImages?.map((image, index) => (
           <Card
             key={index}
@@ -41,16 +42,23 @@ export default MemorizeSupports;
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#2b2a33",
+  },
+  cards: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    alignContent: "flex-end",
-    width: "100%",
-    height: "100%",
-    // borderWidth: 2,
-    // borderColor: "red",
     backgroundColor: "#2b2a33",
-    padding: 15,
+    marginTop: 15,
+  },
+  text: {
+    color: "#cd3545",
+    fontSize: 40,
+    marginTop: 15,
+    textTransform: "uppercase",
+    letterSpacing: 2,
   },
 });

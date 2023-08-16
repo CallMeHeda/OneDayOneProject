@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { all } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
@@ -15,8 +15,9 @@ function MemorizeAll() {
   }, []);
 
   return (
-    <View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <Text style={styles.text}>Memorize All</Text>
+      <View style={styles.cards}>
         {shuffledImages?.map((image, index) => (
           <Card
             key={index}
@@ -42,13 +43,22 @@ export default MemorizeAll;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#2b2a33",
+  },
+  cards: {
     flexDirection: "row",
     flexWrap: "wrap",
-    alignContent: "flex-end",
     justifyContent: "center",
-    padding: 15,
-    // borderWidth: 2,
-    // borderColor: "white",
-    // marginTop: 30,
+    backgroundColor: "#2b2a33",
+    marginTop: 10,
+  },
+  text: {
+    color: "#cd3545",
+    fontSize: 40,
+    marginTop: 10,
+    textTransform: "uppercase",
+    letterSpacing: 2,
   },
 });

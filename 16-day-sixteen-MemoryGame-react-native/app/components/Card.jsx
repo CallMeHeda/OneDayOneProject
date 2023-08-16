@@ -46,24 +46,24 @@ export default function Card({
   };
 
   const getCardStyle = () => {
+    // TANKS CARD STYLE
+    if (shuffledImages.length === 22) {
+      return {
+        ...styles.container,
+        width: 80,
+        height: 80,
+      };
+    }
     // DAMAGES STYLE
     if (shuffledImages.length === 34) {
       return {
         ...styles.container,
-        width: 70,
-        height: 70,
+        width: 65,
+        height: 65,
       };
     }
     // SUPPORTS CARD STYLE
     if (shuffledImages.length === 20) {
-      return {
-        ...styles.container,
-        width: 90,
-        height: 90,
-      };
-    }
-    // TANKS CARD STYLE
-    if (shuffledImages.length === 22) {
       return {
         ...styles.container,
         width: 80,
@@ -74,8 +74,8 @@ export default function Card({
     if (shuffledImages.length === 76) {
       return {
         ...styles.container,
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
       };
     }
 
@@ -122,16 +122,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-end",
-    // width: 85,
-    // height: 85,
-    // borderWidth: 2,
-    // borderColor: "red",
   },
   cardContainer: {
     width: "90%",
     height: "90%",
     position: "relative",
-    // borderWidth: 2,
   },
   card: {
     width: "100%",

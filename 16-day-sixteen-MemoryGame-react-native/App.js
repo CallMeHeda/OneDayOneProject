@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import * as ScreenOrientation from "expo-screen-orientation";
@@ -31,7 +31,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#2b2a33",
     alignItems: "center",
     justifyContent: "center",
-    // borderWidth: 2,
-    // borderColor: "red",
   },
 });
