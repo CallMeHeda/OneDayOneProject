@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import { tanks } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
+import { useTimer } from "../hooks/useTimer";
 
 function MemorizeTanks() {
   const [shuffledImages, setShuffledImages] = useState([]);
@@ -10,13 +11,21 @@ function MemorizeTanks() {
   const [selectedCardsId, setSelectedCardsId] = useState([]);
   const [identicalCards, setIdenticalCards] = useState([]);
 
+  const isGameComplete = identicalCards.length === shuffledImages.length;
+  const timer = useTimer(isGameComplete);
+
   useEffect(() => {
     utils.shuffleCards(tanks, setShuffledImages);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Memorize Tanks</Text>
+      {!isGameComplete ? (
+        <Text style={styles.text}>Timer: {timer} seconds </Text>
+      ) : (
+        <Text style={styles.text}>Game completed in {timer} seconds</Text>
+      )}
+
       <View style={styles.cards}>
         {shuffledImages?.map((image, index) => (
           <Card
