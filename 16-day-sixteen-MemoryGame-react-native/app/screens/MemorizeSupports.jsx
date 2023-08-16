@@ -3,6 +3,8 @@ import { View, StyleSheet, Text } from "react-native";
 import { supports } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
+import { useTimer } from "../hooks/useTimer";
+import ShowModal from "../components/ShowModal";
 
 function MemorizeSupports() {
   const [shuffledImages, setShuffledImages] = useState([]);
@@ -10,13 +12,26 @@ function MemorizeSupports() {
   const [selectedCardsId, setSelectedCardsId] = useState([]);
   const [identicalCards, setIdenticalCards] = useState([]);
 
+  const isGameComplete = identicalCards.length === shuffledImages.length;
+  const timer = useTimer(isGameComplete);
+
   useEffect(() => {
     utils.shuffleCards(supports, setShuffledImages);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Memorize Supports</Text>
+      {!isGameComplete ? (
+        <Text style={styles.text}>Memorize Supports: {timer} </Text>
+      ) : (
+        <ShowModal
+          timer={timer}
+          setSelectedCardsId={setSelectedCardsId}
+          setSelectedCards={setSelectedCards}
+          setIdenticalCards={setIdenticalCards}
+          reset={utils.reset}
+        />
+      )}
       <View style={styles.cards}>
         {shuffledImages?.map((image, index) => (
           <Card
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#cd3545",
-    fontSize: 40,
+    fontSize: 25,
     marginTop: 15,
     textTransform: "uppercase",
     letterSpacing: 2,

@@ -66,8 +66,8 @@ export default function Card({
     if (shuffledImages.length === 20) {
       return {
         ...styles.container,
-        width: 80,
-        height: 80,
+        width: 85,
+        height: 85,
       };
     }
     // ALL CHARACTERS CARDS STYLE

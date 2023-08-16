@@ -4,6 +4,7 @@ import { tanks } from "../utils/heroes";
 import Card from "../components/Card";
 import * as utils from "../utils/utils";
 import { useTimer } from "../hooks/useTimer";
+import ShowModal from "../components/ShowModal";
 
 function MemorizeTanks() {
   const [shuffledImages, setShuffledImages] = useState([]);
@@ -21,11 +22,16 @@ function MemorizeTanks() {
   return (
     <View style={styles.container}>
       {!isGameComplete ? (
-        <Text style={styles.text}>Timer: {timer} seconds </Text>
+        <Text style={styles.text}>Memorize Tanks: {timer} </Text>
       ) : (
-        <Text style={styles.text}>Game completed in {timer} seconds</Text>
+        <ShowModal
+          timer={timer}
+          setSelectedCardsId={setSelectedCardsId}
+          setSelectedCards={setSelectedCards}
+          setIdenticalCards={setIdenticalCards}
+          reset={utils.reset}
+        />
       )}
-
       <View style={styles.cards}>
         {shuffledImages?.map((image, index) => (
           <Card
@@ -65,8 +71,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#cd3545",
-    fontSize: 40,
-    marginTop: 15,
+    fontSize: 25,
+    marginTop: 20,
     textTransform: "uppercase",
     letterSpacing: 2,
   },

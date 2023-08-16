@@ -55,3 +55,14 @@ export const isCardSelected = (
 ) => {
   return selectedCardsId.includes(index) || identicalCards.includes(card);
 };
+
+// RESET
+export const reset = (
+  setSelectedCardsId,
+  setSelectedCards,
+  setIdenticalCards
+) => {
+  setSelectedCardsId([]);
+  setSelectedCards([]);
+  setIdenticalCards([]);
+};
