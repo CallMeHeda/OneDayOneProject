@@ -22,25 +22,6 @@ export default function Card({
   isCardSelected,
   shuffledImages,
 }) {
-  useEffect(() => {
-    // if (shuffledImages.length === 34 || shuffledImages.length === 76) {
-    //   ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-    // } else {
-    //   ScreenOrientation.unlockAsync();
-    // }
-    changeScreenOrientation();
-  }, [shuffledImages]);
-
-  async function changeScreenOrientation() {
-    if (shuffledImages.length === 34 || shuffledImages.length === 76) {
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE
-      );
-    } else {
-      await ScreenOrientation.unlockAsync();
-    }
-  }
-
   const animatedValue = useSharedValue(0);
 
   const frontCardStyle = useAnimatedStyle(() => {
@@ -77,8 +58,8 @@ export default function Card({
     if (shuffledImages.length === 20) {
       return {
         ...styles.container,
-        width: 85,
-        height: 85,
+        width: 90,
+        height: 90,
       };
     }
     // TANKS CARD STYLE
@@ -141,8 +122,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-end",
-    width: 85,
-    height: 85,
+    // width: 85,
+    // height: 85,
     // borderWidth: 2,
     // borderColor: "red",
   },

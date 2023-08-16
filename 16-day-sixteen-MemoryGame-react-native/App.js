@@ -1,21 +1,27 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import MemorizeSupports from "./app/screens/MemorizeSupports";
-import MemorizeDamages from "./app/screens/MemorizeDamages";
-import MemorizeTanks from "./app/screens/MemorizeTanks";
-import MemorizeAll from "./app/screens/MemorizeAll";
-import Home from "./app/screens/Home";
+
+import { NavigationContainer } from "@react-navigation/native";
+import * as ScreenOrientation from "expo-screen-orientation";
+import { useEffect } from "react";
+import Navigation from "./app/components/Navigation";
 
 export default function App() {
+  async function changeScreenOrientation() {
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE
+    );
+  }
+
+  useEffect(() => {
+    changeScreenOrientation();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Home />
-      {/* <MemorizeAll /> */}
-      {/* <MemorizeTanks /> */}
-      {/* <MemorizeDamages /> */}
-      {/* <MemorizeSupports /> */}
+    <NavigationContainer>
+      <Navigation />
       <StatusBar style="light" />
-    </View>
+    </NavigationContainer>
   );
 }
 

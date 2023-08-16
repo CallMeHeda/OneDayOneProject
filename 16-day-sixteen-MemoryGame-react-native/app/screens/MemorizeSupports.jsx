@@ -41,13 +41,16 @@ export default MemorizeSupports;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    alignContent: "center",
-    // width: "100%",
-    // borderWidth: 1,
-    // borderColor: "white",
+    alignContent: "flex-end",
+    width: "100%",
+    height: "100%",
+    // borderWidth: 2,
+    // borderColor: "red",
+    backgroundColor: "#2b2a33",
+    padding: 15,
   },
 });

@@ -7,30 +7,22 @@ import {
   Animated,
   TouchableOpacity,
 } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
-
-const bg = require("../../assets/images/bg.jpg");
+import { useNavigation } from "@react-navigation/native";
 
 function Home() {
+  const bg = require("../../assets/images/bg.jpg");
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const navigation = useNavigation();
 
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 3000,
       useNativeDriver: true,
-    }).start();
+    }).start(() => {
+      navigation.navigate("Level");
+    });
   };
-
-  async function changeScreenOrientation() {
-    await ScreenOrientation.lockAsync(
-      ScreenOrientation.OrientationLock.LANDSCAPE
-    );
-  }
-
-  useEffect(() => {
-    changeScreenOrientation();
-  }, []);
 
   return (
     <Animated.View
