@@ -127,7 +127,7 @@ export default function Card({
           />
         ) : (
           <Animated.Image
-            source={require("../../assets/images/logo.jpg")}
+            source={require("../../assets/images/logoCard.jpg")}
             style={[styles.card, backCardStyle]}
           ></Animated.Image>
         )}

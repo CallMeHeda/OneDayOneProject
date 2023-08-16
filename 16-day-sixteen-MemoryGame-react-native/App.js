@@ -4,11 +4,13 @@ import MemorizeSupports from "./app/screens/MemorizeSupports";
 import MemorizeDamages from "./app/screens/MemorizeDamages";
 import MemorizeTanks from "./app/screens/MemorizeTanks";
 import MemorizeAll from "./app/screens/MemorizeAll";
+import Home from "./app/screens/Home";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <MemorizeAll />
+      <Home />
+      {/* <MemorizeAll /> */}
       {/* <MemorizeTanks /> */}
       {/* <MemorizeDamages /> */}
       {/* <MemorizeSupports /> */}
