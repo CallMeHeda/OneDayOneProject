@@ -1,5 +1,7 @@
 [![My Skills](https://skillicons.dev/icons?i=react,babel,androidstudio)](https://skillicons.dev)
 
+## Overwatch™ is a registered trademark of Blizzard Entertainment, Inc. in the U.S. and/or other countries.
+
 ## Overwatch™ est une marque déposée ou enregistrée de Blizzard Entertainment, Inc., aux États-Unis et/ou dans d'autres pays.
 
 # previews
