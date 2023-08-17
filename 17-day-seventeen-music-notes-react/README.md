@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+[![My Skills](https://skillicons.dev/icons?i=react,ts,sass)](https://skillicons.dev)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Piano notes from : https://archive.org/details/24-piano-keys
 
-## Available Scripts
+### Beats from : https://github.com/Tonejs/audio/tree/master/drum-samples
 
-In the project directory, you can run:
+### CSS Piano mainly from : https://codepen.io/zastrow/pen/kxdYdk 🎹
 
-### `npm start`
+### Keyboard by Me 🤯
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Previews Beats
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Capture d’écran (399)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/d74502b3-e4e4-4cdc-aeb1-ec02690d1768)
+![Capture d’écran (400)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/476c9b77-216a-4b51-bd16-c1be2f73bc91)
 
-### `npm test`
+## Preview Piano
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Capture d’écran (401)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ba30d54b-a87d-4131-a5f5-30889489a2a2)
 
-### `npm run build`
+## Video Beats
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/f16c5a34-3270-4e7f-a2e8-1c0b74943b31
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Video Piano
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/39ec9f76-e3f0-4a19-9efb-23e9ab246167

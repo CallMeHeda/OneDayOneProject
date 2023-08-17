@@ -1,9 +1,3 @@
-html {
-  // background: url("../public/bg.jpg") bottom center;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-}
-
 body,
 html {
   display: flex;
@@ -20,4 +14,55 @@ html {
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
+  .buttons {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 250px;
+    display: flex;
+    gap: 15px;
+    button {
+      padding: 10px 30px;
+      background: #cd3545;
+      border: none;
+      border-radius: 50px;
+      font-size: 20px;
+      color: #eee0e0;
+      box-shadow: 5px 5px 5px 1px rgba(28, 25, 28, 1);
+      letter-spacing: 1px;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-top: 70px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(238, 221, 221);
+    letter-spacing: 2px;
+    font-family: cursive;
+    text-transform: uppercase;
+    span {
+      color: #cd3545;
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    p {
+      text-align: center;
+      font-size: 20px;
+      color: rgb(238, 221, 221);
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    span {
+      color: #dc3545;
+    }
+  }
 }
