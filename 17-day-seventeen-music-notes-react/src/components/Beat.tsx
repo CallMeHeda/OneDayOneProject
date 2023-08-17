@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import * as Tone from "tone";
 import Keyboard from "./Keyboard";
 
-const Beat = () => {
+function Beat() {
   const [isAPressed, setIsAPressed] = useState<boolean>(false);
   const [isZPressed, setIsZPressed] = useState<boolean>(false);
   const [isEPressed, setIsEPressed] = useState<boolean>(false);
@@ -17,20 +17,17 @@ const Beat = () => {
 
   const [keyboardTheme, setKeyboardTheme] = useState<boolean>(false);
 
-  const players = new Tone.Players(
-    {
-      clap: "./notes/beat/clap-break-the-bank_C_minor.wav",
-      kick: "./notes/beat/kick-08.wav",
-      snareMouth: "./notes/beat/snare.mp3",
-      gameReady: "./notes/beat/game-ready-button-fx_D_major.wav",
-      harshKick: "./notes/beat/harsh-kick.wav",
-      snare: "./notes/beat/memphis-snare-dry-drum_11bpm_C_minor.wav",
-      hithat: "./notes/beat/hihat.mp3",
-      kickMp3: "./notes/beat/kick.mp3",
-      tom: "./notes/beat/tom.mp3",
-    }
-    // { volume: -6 }
-  ).toDestination();
+  const players = new Tone.Players({
+    clap: "./notes/beat/clap-break-the-bank_C_minor.wav",
+    kick: "./notes/beat/kick-08.wav",
+    snareMouth: "./notes/beat/snare.mp3",
+    gameReady: "./notes/beat/game-ready-button-fx_D_major.wav",
+    harshKick: "./notes/beat/harsh-kick.wav",
+    snare: "./notes/beat/memphis-snare-dry-drum_11bpm_C_minor.wav",
+    hithat: "./notes/beat/hihat.mp3",
+    kickMp3: "./notes/beat/kick.mp3",
+    tom: "./notes/beat/tom.mp3",
+  }).toDestination();
 
   const handleKeyDown = (e: any) => {
     const pressedKey = e.key.toLowerCase();
@@ -113,7 +110,7 @@ const Beat = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <Keyboard
         isAPressed={isAPressed}
         isZPressed={isZPressed}
@@ -129,6 +126,6 @@ const Beat = () => {
       />
     </div>
   );
-};
+}
 
 export default Beat;

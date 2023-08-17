@@ -1,136 +1,132 @@
-.projectTitle {
+.container {
+  background: url("../../public/bgBeat.jpg") bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  h1 {
-    font-size: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgb(240, 230, 230);
-    font-family: "font-cursive";
-    text-shadow: 0 0 2px rgb(46, 44, 44);
-    span {
-      color: #dc3545;
-    }
-  }
-}
-
-.keyboard {
-  display: flex;
-  flex-direction: column;
-  margin-top: 100px;
-  padding: 5px;
-  border-radius: 10px;
-
-  .keyRow1,
-  .keyRow2,
-  .keyRow3,
-  .keyRow4,
-  .keyRow5,
-  .keyRow6 {
+  .keyboard {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    .key {
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 5px;
+    border-radius: 10px;
+
+    .keyRow1,
+    .keyRow2,
+    .keyRow3,
+    .keyRow4,
+    .keyRow5,
+    .keyRow6 {
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      margin: 3px 10px 0 0;
-      width: 70px;
-      height: 70px;
-      border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      font-size: 20px;
-      text-align: center;
-      text-shadow: 0 0 5px black;
-      transition: all 0.03s;
-      .keyIcon {
+      flex-wrap: wrap;
+      .key {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin-top: 4px;
+        margin: 3px 10px 0 0;
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        text-shadow: 0 0 5px black;
+        transition: all 0.03s;
+        .keyIcon {
+          display: flex;
+          justify-content: center;
+          margin-top: 4px;
+        }
+      }
+      .key.enter {
+        border-bottom: none;
+        border-radius: 3px 3px 0 0;
+        width: 115px;
+      }
+      .key.emptyEnter {
+        border-top: none;
+        border-radius: 0 0 3px 3px;
+        margin-top: -0px;
+        width: 90px;
+        position: relative;
+        left: 15px;
+        height: 75px;
+      }
+      .key:last-child {
+        margin-right: 0 !important;
       }
     }
-    .key.enter {
-      border-bottom: none;
-      border-radius: 3px 3px 0 0;
-      width: 115px;
+    .keyRow1 {
+      align-self: flex-start;
+      .key:first-child {
+        margin-right: 90px;
+      }
+      .key:nth-child(5),
+      .key:nth-child(9) {
+        margin-right: 50px;
+      }
     }
-    .key.emptyEnter {
-      border-top: none;
-      border-radius: 0 0 3px 3px;
-      margin-top: -0px;
-      width: 90px;
-      position: relative;
-      left: 15px;
-      height: 75px;
+    .keyRow2 {
+      align-self: flex-start;
+      .key:nth-child(14) {
+        width: 152px;
+      }
     }
-    .key:last-child {
-      margin-right: 0 !important;
+    .keyRow3 {
+      align-self: flex-start;
+      .key:first-child {
+        width: 105px;
+      }
     }
-  }
-  .keyRow1 {
-    align-self: flex-start;
-    .key:first-child {
-      margin-right: 90px;
+    .keyRow4 {
+      align-self: flex-start;
+      .key:first-child {
+        width: 115px;
+      }
     }
-    .key:nth-child(5),
-    .key:nth-child(9) {
-      margin-right: 50px;
+    .keyRow5 {
+      align-self: flex-start;
+      .key:first-child {
+        width: 85px;
+      }
+      .key:last-child {
+        width: 215px;
+      }
     }
-  }
-  .keyRow2 {
-    align-self: flex-start;
-    .key:nth-child(14) {
-      width: 152px;
-    }
-  }
-  .keyRow3 {
-    align-self: flex-start;
-    .key:first-child {
-      width: 105px;
-    }
-  }
-  .keyRow4 {
-    align-self: flex-start;
-    .key:first-child {
-      width: 115px;
-    }
-  }
-  .keyRow5 {
-    align-self: flex-start;
-    .key:first-child {
-      width: 85px;
-    }
-    .key:last-child {
-      width: 215px;
-    }
-  }
-  .keyRow6 {
-    align-self: flex-start;
-    .key:first-child,
-    .key:last-child {
-      width: 100px;
-    }
-    .key:nth-child(2),
-    .key:nth-child(3),
-    .key:nth-child(5),
-    .key:nth-child(6),
-    .key:nth-child(7) {
-      width: 90px;
-    }
-    .key:nth-child(4) {
-      width: 470px;
+    .keyRow6 {
+      align-self: flex-start;
+      .key:first-child,
+      .key:last-child {
+        width: 100px;
+      }
+      .key:nth-child(2),
+      .key:nth-child(3),
+      .key:nth-child(5),
+      .key:nth-child(6),
+      .key:nth-child(7) {
+        width: 90px;
+      }
+      .key:nth-child(4) {
+        width: 470px;
+      }
     }
   }
-}
 
-.keyEvent {
-  background-color: #dc3546b9 !important;
-  box-shadow: 0 0 1rem #e7e7e2;
-  transform: scale(1.3);
-}
-.keyboardTheme {
-  background: linear-gradient(to right, #32bf21 0%, #c2460c 50%, #4c17ad 100%);
+  .keyEvent {
+    background-color: #dc3546b9 !important;
+    box-shadow: 0 0 1rem #e7e7e2;
+    transform: scale(1.3);
+  }
+  .keyboardTheme {
+    background: linear-gradient(
+      to right,
+      #32bf21 0%,
+      #c2460c 50%,
+      #4c17ad 100%
+    );
+  }
 }
