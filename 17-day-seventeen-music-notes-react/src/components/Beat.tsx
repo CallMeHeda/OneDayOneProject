@@ -10,6 +10,9 @@ const Beat = () => {
   const [isQPressed, setIsQPressed] = useState<boolean>(false);
   const [isSPressed, setIsSPressed] = useState<boolean>(false);
   const [isDPressed, setIsDPressed] = useState<boolean>(false);
+  const [isCtrlPressed, setIsCtrlPressed] = useState<boolean>(false);
+  const [isSpacePressed, setIsSpacePressed] = useState<boolean>(false);
+  const [isShiftPressed, setIsShiftPressed] = useState<boolean>(false);
   const [isSunPressed, setIsSunPressed] = useState<boolean>(false);
 
   const [keyboardTheme, setKeyboardTheme] = useState<boolean>(false);
@@ -18,11 +21,15 @@ const Beat = () => {
     {
       clap: "./notes/beat/clap-break-the-bank_C_minor.wav",
       kick: "./notes/beat/kick-08.wav",
+      snareMouth: "./notes/beat/snare.mp3",
       gameReady: "./notes/beat/game-ready-button-fx_D_major.wav",
       harshKick: "./notes/beat/harsh-kick.wav",
       snare: "./notes/beat/memphis-snare-dry-drum_11bpm_C_minor.wav",
-    },
-    { volume: -6 }
+      hithat: "./notes/beat/hihat.mp3",
+      kickMp3: "./notes/beat/kick.mp3",
+      tom: "./notes/beat/tom.mp3",
+    }
+    // { volume: -6 }
   ).toDestination();
 
   const handleKeyDown = (e: any) => {
@@ -33,6 +40,9 @@ const Beat = () => {
     if (pressedKey === "q") setIsQPressed(true);
     if (pressedKey === "s") setIsSPressed(true);
     if (pressedKey === "d") setIsDPressed(true);
+    if (pressedKey === "shift") setIsShiftPressed(true);
+    if (pressedKey === "control") setIsCtrlPressed(true);
+    if (pressedKey === " ") setIsSpacePressed(true);
     if (pressedKey === "pagedown") setIsSunPressed(true);
   };
 
@@ -55,7 +65,7 @@ const Beat = () => {
       setIsDPressed(false);
     }
     if (players.loaded && keyboardEvent.key.toLowerCase() === "e") {
-      const player = players.player("kick");
+      const player = players.player("snareMouth");
       if (player) player.start();
       setIsEPressed(false);
     }
@@ -69,11 +79,27 @@ const Beat = () => {
       if (player) player.start();
       setIsSPressed(false);
     }
+    if (players.loaded && keyboardEvent.key.toLowerCase() === "shift") {
+      const player = players.player("tom");
+      if (player) player.start();
+      setIsShiftPressed(false);
+    }
+    if (players.loaded && keyboardEvent.key.toLowerCase() === "control") {
+      const player = players.player("kickMp3");
+      if (player) player.start();
+      setIsCtrlPressed(false);
+    }
+    if (players.loaded && keyboardEvent.key.toLowerCase() === " ") {
+      const player = players.player("hithat");
+      if (player) player.start();
+      setIsSpacePressed(false);
+    }
 
     if (keyboardEvent.key.toLowerCase() === "pagedown") {
       setKeyboardTheme((theme) => !theme);
       setIsSunPressed(false);
     }
+    console.log(keyboardEvent.key.toLowerCase());
   };
 
   useEffect(() => {
@@ -96,6 +122,9 @@ const Beat = () => {
         isSPressed={isSPressed}
         isDPressed={isDPressed}
         isSunPressed={isSunPressed}
+        isShiftPressed={isShiftPressed}
+        isCtrlPressed={isCtrlPressed}
+        isSpacePressed={isSpacePressed}
         keyboardTheme={keyboardTheme}
       />
     </div>

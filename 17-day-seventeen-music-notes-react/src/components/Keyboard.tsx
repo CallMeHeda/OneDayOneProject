@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faVolumeLow,
@@ -33,6 +31,9 @@ function Keyboard(props: {
   isSPressed: boolean;
   isDPressed: boolean;
   isSunPressed: boolean;
+  isShiftPressed: boolean;
+  isCtrlPressed: boolean;
+  isSpacePressed: boolean;
   keyboardTheme: boolean;
 }) {
   // ROW 1
@@ -523,7 +524,12 @@ function Keyboard(props: {
 
       <div className="keyRow5">
         {keyRow5.map((key) => (
-          <div key={key.keyValue} className="key">
+          <div
+            key={key.keyValue}
+            className={`key ${
+              key.keyValue === 0 && props.isShiftPressed ? "keyEvent" : ""
+            }`}
+          >
             <span>
               {key.keyValue !== 0 && key.keyValue !== 1 ? key.keyValue : null}
             </span>
@@ -537,6 +543,11 @@ function Keyboard(props: {
           <div
             key={key.keyValue}
             className={`key ${
+              (key.keyValue === "CTRL1" && props.isCtrlPressed) ||
+              (key.keyValue === 1 && props.isSpacePressed)
+                ? "keyEvent"
+                : ""
+            } ${
               key.jsx && key.jsx.props.className === "keyIcon space"
                 ? "space"
                 : ""
