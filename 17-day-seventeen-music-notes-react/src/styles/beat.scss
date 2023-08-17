@@ -1,4 +1,4 @@
-.container {
+.containerBeat {
   background: url("../../public/bgBeat.jpg") bottom center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,6 +12,7 @@
     margin-top: 100px;
     padding: 5px;
     border-radius: 10px;
+    position: absolute;
 
     .keyRow1,
     .keyRow2,

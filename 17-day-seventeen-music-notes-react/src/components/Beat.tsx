@@ -110,7 +110,7 @@ function Beat() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="containerBeat">
       <Keyboard
         isAPressed={isAPressed}
         isZPressed={isZPressed}
