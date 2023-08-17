@@ -1,10 +1,12 @@
 import "./global.scss";
 import Beat from "./components/Beat";
+import PianoView from "./components/PianoView";
 
 function App() {
   return (
     <div className="app">
-      <Beat />
+      {/* <Beat /> */}
+      <PianoView />
     </div>
   );
 }
