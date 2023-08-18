@@ -1,14 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
-    margin: 0;
-    padding: 0
+    @apply m-0 p-0;
 }
 
 body {
-    background-color: #373434;
-    background: url('../images/bg/sky.jpg') center no-repeat;
-    background-size: cover;
-    min-width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
+    @apply bg-[url('../images/bg/sky.jpg')] bg-center bg-no-repeat bg-cover min-h-screen min-w-full flex
+}
+
+#app {
+    @apply w-screen h-screen flex
 }
