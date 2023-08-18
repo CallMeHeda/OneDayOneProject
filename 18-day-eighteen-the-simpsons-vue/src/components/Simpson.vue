@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <button class="">
+    <button @click="fetchData">
       <img src="../assets/images/donut.png" class="donut" width="30" height="30" />
       <img src="../assets/images/homer.png" class="homer" width="120" height="120" />
       <span class="doh">D'oh!</span>
@@ -46,7 +46,6 @@ export default {
     async fetchData() {
       await axios.get('https://thesimpsonsquoteapi.glitch.me/quotes').then((response) => {
         this.simpson = response.data
-        console.log(this.simpson)
       })
     }
   }
