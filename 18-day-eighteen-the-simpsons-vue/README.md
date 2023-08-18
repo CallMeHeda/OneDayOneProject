@@ -1,46 +1,28 @@
-# 18-day-eighteen-the-simpson-vue
+[![My Skills](https://skillicons.dev/icons?i=vue,ts,vite,tailwind)](https://skillicons.dev)
 
-This template should help get you started developing with Vue 3 in Vite.
+### Credits :
 
-## Recommended IDE Setup
+- "The Simpsons" (Created by Matt Groening)
+- © 20th Century Studios
+- All rights reserved.
+- Initial airing year: 1989.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- "Les Simpson" (Créé par Matt Groening)
+- © 20th Century Studios
+- Tous droits réservés.
+- Année de diffusion initiale : 1989.
 
-## Type Support for `.vue` Imports in TS
+## Previews
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+![Capture d’écran (404)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/613ac1ae-c54a-4eeb-81f2-cb636e7b94fa)
+![Capture d’écran (405)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ff82954b-dea7-4f2a-9f59-556a74626776)
+![Capture d’écran (406)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/2c33a106-3843-48bb-9abc-e376709dd392)
+![Capture d’écran (407)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/761bca5f-0a47-4c01-8ca5-09365cd91552)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Video
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/c0eace26-cb0f-459b-84d6-e40178a30e12
 
-## Customize configuration
+### Api
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+https://thesimpsonsquoteapi.glitch.me/
