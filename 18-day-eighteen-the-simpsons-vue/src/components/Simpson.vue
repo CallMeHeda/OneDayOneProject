@@ -1,9 +1,18 @@
 <template>
   <div class="flex flex-col flex-wrap justify-center items-center w-screen h-screen">
     <div class="flex flex-col justify-center items-center gap-3">
-      <p>{{ simpson[0].character }}</p>
-      <img :src="simpson[0].image" :alt="simpson[0].character" width="200" height="350" />
-      <p>{{ simpson[0].quote }}</p>
+      <div class="book">
+        <blockquote class="flex flex-col m-12">
+          <q class="text-center">{{ simpson[0].quote }}</q>
+          <footer class="flex justify-end mt-3">
+            <cite>- {{ simpson[0].character }}</cite>
+          </footer>
+        </blockquote>
+        <div class="cover">
+          <img :src="simpson[0].image" :alt="simpson[0].character" width="200" height="350" />
+          <p class="text-xl">{{ simpson[0].character }}</p>
+        </div>
+      </div>
     </div>
     <button class="">
       <img src="../assets/images/donut.png" class="donut" width="30" height="30" />
@@ -91,5 +100,22 @@ button:hover .doh {
 button:hover .btnWord,
 button:hover .btnWord2 {
   @apply opacity-100;
+}
+
+.book {
+  @apply relative flex items-center justify-end w-96 h-[545px] text-black bg-slate-200 rounded-xl shadow-xl;
+  transform: preserve-3d;
+  perspective: 2000px;
+}
+
+.cover {
+  @apply absolute top-0 flex flex-col items-center justify-center gap-7 w-full h-full cursor-pointer rounded-xl bg-slate-300 shadow-black shadow-lg;
+  transition: all 0.5s;
+  transform-origin: 0;
+}
+
+.book:hover .cover {
+  transition: all 0.5s;
+  transform: rotateY(-80deg);
 }
 </style>
