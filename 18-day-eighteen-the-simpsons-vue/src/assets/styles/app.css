@@ -7,7 +7,7 @@
 }
 
 body {
-    @apply bg-[url('../images/bg/sky.jpg')] bg-center bg-no-repeat bg-cover min-h-screen min-w-full flex
+    @apply bg-[url('../images/bg/bg.jpg')] bg-center bg-no-repeat bg-cover min-h-screen min-w-full flex
 }
 
 #app {
