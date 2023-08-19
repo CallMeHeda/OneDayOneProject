@@ -3,12 +3,12 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const daySlice = createSlice({
   name: "day",
   initialState: {
-    isDay: true,
+    isDay: false,
   },
   reducers: {
     setIsDay: (state, action) => {
       state.isDay = action.payload;
-      return state;
+      // return state;
     },
   },
 });

@@ -7,9 +7,10 @@ import {
   TextInput,
   Button,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 import ConditionsCase from "./ConditionsCase";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsDay } from "../redux";
@@ -29,10 +30,14 @@ export default function WeatherByCity() {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(setIsDay(isDay));
+    console.log(isDay);
+  }, [dispatch]);
+
   const handleFetchWeatherByCity = () => {
     fetchWeatherByCity(cityInput);
     dispatch(setIsDay(isDay));
-    console.log(isDay);
   };
 
   let bg;
@@ -51,37 +56,34 @@ export default function WeatherByCity() {
       backgroundColor: bg,
     },
     headerContainer: {
-      flex: 1,
+      position: "absolute",
+      top: 100,
+      minWidth: "100%",
       alignItems: "center",
       justifyContent: "center",
     },
-    bodyContainer: {
-      flex: 2,
-      alignItems: "flex-start",
-      justifyContent: "flex-end",
-      width: 350,
-      paddingLeft: 10,
-      paddingLeft: 10,
+    headerTemp: {
+      top: 50,
+      alignItems: "center",
+      justifyContent: "center",
     },
     temp: {
-      fontSize: 48,
+      fontSize: 80,
       color: "#f0edf6",
     },
     weatherCondition: {
-      fontSize: 45,
+      fontSize: 35,
       color: "#f0edf6",
-      width: "100%",
-      marginBottom: 20,
-    },
-    haveAGood: {
-      fontSize: 18,
-      color: "#f0edf6",
-      marginBottom: 30,
+      position: "absolute",
+      bottom: 40,
+      left: 20,
     },
     country: {
-      fontSize: 30,
+      fontSize: 27,
       color: "#f0edf6",
-      marginBottom: 20,
+      textAlign: "center",
+      width: "100%",
+      // borderWidth: 2,
     },
     input: {
       height: 50,
@@ -96,7 +98,9 @@ export default function WeatherByCity() {
 
   return (
     <View style={styles.container}>
-      {!temperature ? (
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : !temperature ? (
         <View
           style={{
             width: "90%",
@@ -113,36 +117,36 @@ export default function WeatherByCity() {
             onPress={handleFetchWeatherByCity}
           ></Button>
         </View>
-      ) : null}
-      {isLoading ? (
-        <ActivityIndicator size="large" />
       ) : (
-        <View>
+        <View
+          style={{
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+          }}
+        >
           <View style={styles.headerContainer}>
-            <Text style={styles.temp}>
-              {temperature}° {isDay.isDay}
-            </Text>
+            <Text style={styles.country}>{country}</Text>
             <Text style={styles.country}>
-              {country} - {city}{" "}
-              <MaterialCommunityIcons
-                size={24}
-                name="map-search"
-                color={"#dc3545"}
-              />
+              <Text>
+                {city} <Ionicons name="search" size={30} color="#cd3545" />
+              </Text>
             </Text>
           </View>
 
           <ConditionsCase weatherCondition={weatherCondition} isDay={isDay} />
 
-          <View style={styles.bodyContainer}>
-            <Text style={styles.weatherCondition}>
-              {weatherCondition}
-              <Image
-                style={{ width: 64, height: 64 }}
-                source={{ uri: `https://${icon}` }}
-              />
-            </Text>
+          <View style={styles.headerTemp}>
+            <Text style={styles.temp}>{temperature}°</Text>
           </View>
+
+          <Text style={styles.weatherCondition}>
+            {weatherCondition}
+            <Image
+              style={{ width: 64, height: 64 }}
+              source={{ uri: `https://${icon}` }}
+            />
+          </Text>
         </View>
       )}
     </View>

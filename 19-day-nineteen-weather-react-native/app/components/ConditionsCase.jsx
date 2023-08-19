@@ -1,4 +1,5 @@
 import LottieView from "lottie-react-native";
+import { useSelector } from "react-redux";
 
 export default function ConditionsCase({ weatherCondition, isDay }) {
   switch (weatherCondition) {
