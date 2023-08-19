@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import WeatherByCity from "./app/components/WeatherByCity";
+import WeatherGeolocation from "./app/components/WeatherGeolocation";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <WeatherByCity />
+      {/* <WeatherByCity /> */}
+      <WeatherGeolocation />
       <StatusBar style="auto" />
     </View>
   );
