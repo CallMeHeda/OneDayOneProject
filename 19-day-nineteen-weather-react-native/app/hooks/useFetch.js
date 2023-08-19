@@ -1,6 +1,9 @@
 import { API_KEY } from "@env";
 import { URL } from "@env";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsDay } from "../redux";
+import axios from "axios";
 
 export const useFetch = () => {
   const [temperature, setTemperature] = useState(0);
@@ -8,55 +11,47 @@ export const useFetch = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [icon, setIcon] = useState("");
-  const [isDay, setIsDay] = useState(true);
-
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const isDay = useSelector((state) => state.day.isDay);
+  const dispatch = useDispatch();
+
   const fetchWeatherCurrentLocation = (lat, lon) => {
-    fetch(`${URL}${lat},${lon}&key=${API_KEY}`)
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        if (json && json.current) {
-          setIsLoading(false);
-          setTemperature(json.current.temp_c);
-          setWeatherCondion(json.current.condition.text);
-          setCountry(json.location.country);
-          setCity(json.location.name);
-          setIcon(json.current.condition.icon);
-          setIsDay(json.current.is_day);
-        } else {
-          setError("Error fetching weather data: Invalid response format");
-          setIsLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-        setError("Error fetching weather data");
+    setIsLoading(true);
+    try {
+      axios.get(`${URL}${lat},${lon}&key=${API_KEY}`).then((response) => {
+        setTemperature(response.data.current.temp_c);
+        setWeatherCondion(response.data.current.condition.text);
+        setCountry(response.data.location.country);
+        setCity(response.data.location.name);
+        setIcon(response.data.current.condition.icon);
+        dispatch(setIsDay(response.data.current.is_day));
         setIsLoading(false);
       });
-    return isLoading;
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+    return isDay;
   };
 
   const fetchWeatherByCity = (city) => {
     setIsLoading(true);
-    fetch(`${URL}${city}&key=${API_KEY}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setTemperature(json.current.temp_c);
-        setWeatherCondion(json.current.condition.text);
-        setCountry(json.location.country);
-        setCity(json.location.name);
-        setIcon(json.current.condition.icon);
-        setIsDay(json.current.is_day);
-        // console.log(json);
+    try {
+      axios.get(`${URL}${city}&key=${API_KEY}`).then((response) => {
+        setTemperature(response.data.current.temp_c);
+        setWeatherCondion(response.data.current.condition.text);
+        setCountry(response.data.location.country);
+        setCity(response.data.location.name);
+        setIcon(response.data.current.condition.icon);
+        dispatch(setIsDay(response.data.current.is_day));
         setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error fetching weather data:", error);
       });
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+    return isDay;
   };
 
   return {
@@ -67,7 +62,7 @@ export const useFetch = () => {
     country,
     city,
     icon,
-    isDay,
     isLoading,
+    isDay,
   };
 };

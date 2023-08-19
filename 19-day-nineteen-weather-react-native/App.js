@@ -1,23 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import WeatherByCity from "./app/components/WeatherByCity";
-import WeatherGeolocation from "./app/components/WeatherGeolocation";
+import "react-native-gesture-handler";
+import { Provider } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+import { store } from "./app/redux";
+import Navigation from "./app/components/Navigation";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <WeatherByCity /> */}
-      <WeatherGeolocation />
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
