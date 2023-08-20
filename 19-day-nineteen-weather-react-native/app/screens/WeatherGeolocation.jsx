@@ -1,24 +1,24 @@
+import { useDispatch } from "react-redux";
+import { setIsDay } from "../redux";
+
+import { useEffect, useState } from "react";
+import { useFetch } from "../hooks/useFetch";
 import {
   View,
   Text,
   StyleSheet,
   ActivityIndicator,
   Image,
+  TouchableOpacity,
   TextInput,
-  Button,
 } from "react-native";
-import { useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import * as Location from "expo-location";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import ConditionsCase from "../components/ConditionsCase";
 
-import ConditionsCase from "./ConditionsCase";
-import { useDispatch, useSelector } from "react-redux";
-import { setIsDay } from "../redux";
-
-export default function WeatherByCity() {
-  const [cityInput, setCityInput] = useState("");
+export default function WeatherGeolocation() {
   const {
-    fetchWeatherByCity,
+    fetchWeatherCurrentLocation,
     temperature,
     weatherCondition,
     country,
@@ -29,23 +29,37 @@ export default function WeatherByCity() {
   } = useFetch();
 
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(setIsDay(isDay));
+    getLocationAsync();
     console.log(isDay);
-  }, [dispatch]);
+  }, []);
 
-  const handleFetchWeatherByCity = () => {
-    fetchWeatherByCity(cityInput);
-    dispatch(setIsDay(isDay));
+  const getLocationAsync = async () => {
+    try {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setError("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      fetchWeatherCurrentLocation(
+        location.coords.latitude,
+        location.coords.longitude
+      );
+      dispatch(setIsDay(isDay));
+    } catch (error) {
+      console.error("Error getting current location:", error);
+      setError("Error getting current location");
+    }
   };
 
   let bg;
-  if (isDay) {
-    bg = isDay ? "#8bd0ec" : "#23272f";
-  } else {
-    bg = isDay.isDay ? "#8bd0ec" : "#23272f";
-  }
+  // if (!isDay) {
+  //   bg = isDay.isDay ? "#8bd0ec" : "#23272f";
+  // } else {
+  bg = isDay ? "#8bd0ec" : "#23272f";
+  // }
 
   const styles = StyleSheet.create({
     container: {
@@ -83,16 +97,6 @@ export default function WeatherByCity() {
       color: "#f0edf6",
       textAlign: "center",
       width: "100%",
-      // borderWidth: 2,
-    },
-    input: {
-      height: 50,
-      width: "100%",
-      alignSelf: "center",
-      backgroundColor: "#fff",
-      borderRadius: 5,
-      padding: 10,
-      marginBottom: 10,
     },
   });
 
@@ -100,23 +104,6 @@ export default function WeatherByCity() {
     <View style={styles.container}>
       {isLoading ? (
         <ActivityIndicator size="large" />
-      ) : !temperature ? (
-        <View
-          style={{
-            width: "90%",
-          }}
-        >
-          <TextInput
-            style={styles.input}
-            onChangeText={setCityInput}
-            value={cityInput}
-          />
-          <Button
-            style={styles.inputBtn}
-            title="Press"
-            onPress={handleFetchWeatherByCity}
-          ></Button>
-        </View>
       ) : (
         <View
           style={{
@@ -129,7 +116,7 @@ export default function WeatherByCity() {
             <Text style={styles.country}>{country}</Text>
             <Text style={styles.country}>
               <Text>
-                {city} <Ionicons name="search" size={30} color="#cd3545" />
+                {city} <Ionicons name="location" size={30} color="#cd3545" />
               </Text>
             </Text>
           </View>

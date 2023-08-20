@@ -1,5 +1,4 @@
 import LottieView from "lottie-react-native";
-import { useSelector } from "react-redux";
 
 export default function ConditionsCase({ weatherCondition, isDay }) {
   switch (weatherCondition) {
@@ -11,6 +10,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
             width: 200,
             height: 200,
             alignSelf: "center",
+            position: "absolute",
+            top: 110,
           }}
           source={require("../../assets/DAY/sunny.json")}
         />
@@ -23,6 +24,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
             width: 200,
             height: 200,
             alignSelf: "center",
+            position: "absolute",
+            top: 110,
           }}
           source={require("../../assets/NIGHT/clear.json")}
         />
@@ -36,6 +39,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/partlyCloudy.json")}
           />
@@ -49,6 +54,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/partlyCloudy.json")}
           />
@@ -63,6 +70,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/cloudy.json")}
           />
@@ -76,6 +85,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/cloudy.json")}
           />
@@ -90,6 +101,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/lightRain.json")}
           />
@@ -103,6 +116,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/lightRain.json")}
           />
@@ -118,6 +133,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/lightRainThunder.json")}
           />
@@ -131,6 +148,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/lightRainThunder.json")}
           />
@@ -145,6 +164,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/lightRainThunder.json")}
           />
@@ -158,6 +179,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/lightRainThunder.json")}
           />
@@ -173,6 +196,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/lightRainShower.json")}
           />
@@ -186,6 +211,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/lightRainShower.json")}
           />
@@ -200,6 +227,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/lightRainShower.json")}
           />
@@ -213,6 +242,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/lightRainShower.json")}
           />
@@ -228,6 +259,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/snow.json")}
           />
@@ -241,6 +274,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/snow.json")}
           />
@@ -256,6 +291,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/snow.json")}
           />
@@ -269,6 +306,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/snow.json")}
           />
@@ -284,6 +323,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/snow.json")}
           />
@@ -297,6 +338,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/snow.json")}
           />
@@ -312,6 +355,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/DAY/mist.json")}
           />
@@ -325,6 +370,8 @@ export default function ConditionsCase({ weatherCondition, isDay }) {
               width: 200,
               height: 200,
               alignSelf: "center",
+              position: "absolute",
+              top: 110,
             }}
             source={require("../../assets/NIGHT/mist.json")}
           />

@@ -1,6 +1,6 @@
 import { API_KEY } from "@env";
 import { URL } from "@env";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsDay } from "../redux";
 import axios from "axios";
@@ -16,10 +16,10 @@ export const useFetch = () => {
   const isDay = useSelector((state) => state.day.isDay);
   const dispatch = useDispatch();
 
-  const fetchWeatherCurrentLocation = async (lat, lon) => {
+  const fetchWeatherCurrentLocation = (lat, lon) => {
     setIsLoading(true);
     try {
-      await axios.get(`${URL}${lat},${lon}&key=${API_KEY}`).then((response) => {
+      axios.get(`${URL}${lat},${lon}&key=${API_KEY}`).then((response) => {
         setTemperature(response.data.current.temp_c);
         setWeatherCondion(response.data.current.condition.text);
         setCountry(response.data.location.country);
@@ -36,10 +36,10 @@ export const useFetch = () => {
     }
   };
 
-  const fetchWeatherByCity = async (city) => {
+  const fetchWeatherByCity = (city) => {
     setIsLoading(true);
     try {
-      await axios.get(`${URL}${city}&key=${API_KEY}`).then((response) => {
+      axios.get(`${URL}${city}&key=${API_KEY}`).then((response) => {
         setTemperature(response.data.current.temp_c);
         setWeatherCondion(response.data.current.condition.text);
         setCountry(response.data.location.country);

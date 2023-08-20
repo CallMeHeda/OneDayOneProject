@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import WeatherGeolocation from "./WeatherGeolocation";
-import WeatherByCity from "./WeatherByCity";
+import WeatherGeolocation from "../screens/WeatherGeolocation";
+import WeatherByCity from "../screens/WeatherByCity";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import CustomDrawerContent from "./CustomDrawerContent";
 
@@ -36,7 +36,7 @@ export default function Navigation() {
         }}
       />
       <Drawer.Screen
-        name="Search"
+        name="WeatherByCity"
         component={WeatherByCity}
         options={{
           drawerIcon: ({ focused, color }) => (
@@ -46,6 +46,7 @@ export default function Navigation() {
               color={focused ? color : "#333"}
             />
           ),
+          headerShown: false,
         }}
       />
     </Drawer.Navigator>

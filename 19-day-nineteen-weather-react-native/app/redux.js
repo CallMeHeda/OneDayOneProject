@@ -8,7 +8,6 @@ const daySlice = createSlice({
   reducers: {
     setIsDay: (state, action) => {
       state.isDay = action.payload;
-      // return state;
     },
   },
 });
