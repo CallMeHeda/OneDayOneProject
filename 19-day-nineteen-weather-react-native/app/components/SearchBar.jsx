@@ -37,7 +37,7 @@ const SearchBar = ({ handleFetchWeatherByCity, setCityInput, cityInput }) => {
           onChangeText={setCityInput}
           value={cityInput}
           placeholder="Search.."
-          placeholderTextColor={"#fff"}
+          placeholderTextColor={"#000"}
         />
         <TouchableOpacity style={styles.icon} onPress={handleToggleAndFetch}>
           <Ionicons name="search" size={25} color="#fff" />
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "85%",
-    color: "#fff",
+    color: "#000",
   },
   icon: {
     justifyContent: "center",
