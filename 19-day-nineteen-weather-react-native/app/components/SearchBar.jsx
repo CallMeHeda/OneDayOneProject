@@ -50,8 +50,9 @@ const SearchBar = ({ handleFetchWeatherByCity, setCityInput, cityInput }) => {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 50,
+    top: 80,
     right: 25,
+    zIndex: 9,
   },
   inputContainer: {
     width: 300,

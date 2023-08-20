@@ -71,18 +71,18 @@ export default function WeatherGeolocation() {
     },
     headerContainer: {
       position: "absolute",
-      top: 100,
+      top: 140,
       minWidth: "100%",
       alignItems: "center",
       justifyContent: "center",
     },
     headerTemp: {
-      top: 50,
+      top: 165,
       alignItems: "center",
       justifyContent: "center",
     },
     temp: {
-      fontSize: 80,
+      fontSize: 90,
       color: "#f0edf6",
     },
     weatherCondition: {
@@ -97,6 +97,7 @@ export default function WeatherGeolocation() {
       color: "#f0edf6",
       textAlign: "center",
       width: "100%",
+      // borderWidth: 2,
     },
   });
 

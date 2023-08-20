@@ -7,6 +7,7 @@ import ConditionsCase from "../components/ConditionsCase";
 import { useDispatch } from "react-redux";
 import { setIsDay } from "../redux";
 import SearchBar from "../components/SearchBar";
+import LottieView from "lottie-react-native";
 
 export default function WeatherByCity() {
   const [cityInput, setCityInput] = useState("");
@@ -57,7 +58,7 @@ export default function WeatherByCity() {
     temp: {
       fontSize: 90,
       color: "#f0edf6",
-      top: 450,
+      top: 480,
       alignSelf: "center",
     },
     weatherCondition: {
@@ -72,7 +73,7 @@ export default function WeatherByCity() {
       textAlign: "center",
       width: "100%",
       position: "absolute",
-      top: 120,
+      top: 160,
     },
     city: {
       fontSize: 27,
@@ -80,7 +81,7 @@ export default function WeatherByCity() {
       textAlign: "center",
       width: "100%",
       position: "absolute",
-      top: 155,
+      top: 195,
     },
   });
 
@@ -98,32 +99,57 @@ export default function WeatherByCity() {
             }}
           >
             <View style={styles.headerContainer}>
-              <SearchBar
-                handleFetchWeatherByCity={handleFetchWeatherByCity}
-                setCityInput={setCityInput}
-                cityInput={cityInput}
-              />
-              <Text style={styles.country}>{country}</Text>
-              <Text style={styles.city}>
-                <Text>
-                  {city} <Ionicons name="airplane" size={30} color="#cd3545" />
-                </Text>
-              </Text>
+              {!temperature ? (
+                <View>
+                  <SearchBar
+                    handleFetchWeatherByCity={handleFetchWeatherByCity}
+                    setCityInput={setCityInput}
+                    cityInput={cityInput}
+                  />
+                  <LottieView
+                    autoPlay
+                    style={{
+                      width: 800,
+                      height: 800,
+                      alignSelf: "center",
+                      position: "absolute",
+                      top: 0,
+                      zIndex: 1,
+                    }}
+                    source={require("../../assets/search/search.json")}
+                  />
+                </View>
+              ) : (
+                <View>
+                  <SearchBar
+                    handleFetchWeatherByCity={handleFetchWeatherByCity}
+                    setCityInput={setCityInput}
+                    cityInput={cityInput}
+                  />
+                  <Text style={styles.country}>{country}</Text>
+                  <Text style={styles.city}>
+                    <Text>
+                      {city}{" "}
+                      <Ionicons name="airplane" size={30} color="#cd3545" />
+                    </Text>
+                  </Text>
 
-              <ConditionsCase
-                weatherCondition={weatherCondition}
-                isDay={isDay}
-              />
+                  <ConditionsCase
+                    weatherCondition={weatherCondition}
+                    isDay={isDay}
+                  />
 
-              <Text style={styles.temp}>{temperature}°</Text>
+                  <Text style={styles.temp}>{temperature}°</Text>
 
-              <Text style={styles.weatherCondition}>
-                {weatherCondition}
-                <Image
-                  style={{ width: 64, height: 64 }}
-                  source={{ uri: `https://${icon}` }}
-                />
-              </Text>
+                  <Text style={styles.weatherCondition}>
+                    {weatherCondition}
+                    <Image
+                      style={{ width: 64, height: 64 }}
+                      source={{ uri: `https://${icon}` }}
+                    />
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
         </View>

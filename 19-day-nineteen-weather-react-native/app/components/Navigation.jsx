@@ -36,7 +36,7 @@ export default function Navigation() {
         }}
       />
       <Drawer.Screen
-        name="WeatherByCity"
+        name="Search"
         component={WeatherByCity}
         options={{
           drawerIcon: ({ focused, color }) => (
