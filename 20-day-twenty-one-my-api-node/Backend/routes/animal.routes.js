@@ -1,19 +1,17 @@
 const express = require("express");
 const {
-  setAnimal,
   getAnimals,
+  postAnimal,
   editAnimal,
   addNewAnimalFunFacts,
+  deleteAnimal,
 } = require("../controllers/animal.controller");
 const router = express.Router();
 
 router.get("/", getAnimals);
-router.post("/", setAnimal);
+router.post("/", postAnimal);
 router.put("/:id", editAnimal);
 router.put("/:id/fun_facts", addNewAnimalFunFacts);
-
-// router.delete("/:id", async (req, res) => {
-//   res.json({ animalId: `Animal ${req.params.id} supprimé` });
-// });
+router.delete("/:id", deleteAnimal);
 
 module.exports = router;

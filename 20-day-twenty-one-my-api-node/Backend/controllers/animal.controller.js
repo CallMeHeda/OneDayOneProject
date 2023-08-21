@@ -5,7 +5,7 @@ module.exports.getAnimals = async (req, res) => {
   res.status(200).json(animals);
 };
 
-module.exports.setAnimal = async (req, res) => {
+module.exports.postAnimal = async (req, res) => {
   const { name } = req.body;
   const existingAnimal = await AnimalModel.findOne({ name });
   const requiredFields = [
@@ -50,16 +50,14 @@ module.exports.setAnimal = async (req, res) => {
 };
 
 module.exports.editAnimal = async (req, res) => {
-  const existingAnimal = await AnimalModel.findById(req.params.id);
+  const animal = await AnimalModel.findById(req.params.id);
 
-  if (!existingAnimal) {
+  if (!animal) {
     return res.status(400).json({ message: "This animal doesn't exists" });
   } else {
-    const updateAnimal = await AnimalModel.findByIdAndUpdate(
-      existingAnimal,
-      req.body,
-      { new: true }
-    );
+    const updateAnimal = await AnimalModel.findByIdAndUpdate(animal, req.body, {
+      new: true,
+    });
     res.status(200).json(updateAnimal);
   }
 };
@@ -87,5 +85,19 @@ module.exports.addNewAnimalFunFacts = async (req, res) => {
       );
       res.status(200).json(updateAnimal);
     }
+  }
+};
+
+module.exports.deleteAnimal = async (req, res) => {
+  const animal = await AnimalModel.findById(req.params.id);
+
+  if (!animal) {
+    return res.status(400).json({ message: "This animal doesn't exists" });
+  } else {
+    await animal.deleteOne();
+
+    res
+      .status(200)
+      .json({ message: `Animal ${animal.name} deleted successfully` });
   }
 };
