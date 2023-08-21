@@ -14,15 +14,13 @@ module.exports.getAnimals = async (req, res) => {
 module.exports.getByName = async (req, res) => {
   const animalName = req.params.name.toLowerCase();
 
-  const animals = await AnimalModel.find({
+  const animal = await AnimalModel.findOne({
     name: { $regex: animalName, $options: "i" },
   });
 
-  for (let animal of animals) {
-    animal.imageUrl = await getObjectSignedUrl(animal.image);
-  }
+  animal.imageUrl = await getObjectSignedUrl(animal.image);
 
-  res.status(200).json(animals);
+  res.status(200).json(animal);
 };
 
 module.exports.postAnimal = async (req, res) => {
