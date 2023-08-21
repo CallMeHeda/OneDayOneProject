@@ -1,5 +1,5 @@
 const AnimalModel = require("../models/animal.model");
-const { getObjectSignedUrl } = require("../middlewares/upload");
+const { getObjectSignedUrl, deleteFile } = require("../middlewares/upload");
 
 module.exports.getAnimals = async (req, res) => {
   const animals = await AnimalModel.find();
@@ -106,6 +106,8 @@ module.exports.addNewAnimalFunFacts = async (req, res) => {
 
 module.exports.deleteAnimal = async (req, res) => {
   const animal = await AnimalModel.findById(req.params.id);
+
+  await deleteFile(animal.image);
 
   if (!animal) {
     return res.status(400).json({ message: "This animal doesn't exists" });

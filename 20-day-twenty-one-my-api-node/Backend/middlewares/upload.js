@@ -1,4 +1,8 @@
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const {
+  S3Client,
+  GetObjectCommand,
+  DeleteObjectCommand,
+} = require("@aws-sdk/client-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
@@ -40,4 +44,12 @@ const getObjectSignedUrl = async function getObjectSignedUrl(key) {
   return url;
 };
 
-module.exports = { upload, getObjectSignedUrl };
+const deleteFile = function deleteFile(fileName) {
+  const deleteParams = {
+    Bucket: bucketName,
+    Key: fileName,
+  };
+  return s3Client.send(new DeleteObjectCommand(deleteParams));
+};
+
+module.exports = { upload, getObjectSignedUrl, deleteFile };
