@@ -11,6 +11,20 @@ module.exports.getAnimals = async (req, res) => {
   res.status(200).json(animals);
 };
 
+module.exports.getByName = async (req, res) => {
+  const animalName = req.params.name.toLowerCase();
+
+  const animals = await AnimalModel.find({
+    name: { $regex: animalName, $options: "i" },
+  });
+
+  for (let animal of animals) {
+    animal.imageUrl = await getObjectSignedUrl(animal.image);
+  }
+
+  res.status(200).json(animals);
+};
+
 module.exports.postAnimal = async (req, res) => {
   const { name } = req.body;
   const imageUrl = req.file.location;
