@@ -48,3 +48,44 @@ module.exports.setAnimal = async (req, res) => {
     res.status(200).json(animal);
   }
 };
+
+module.exports.editAnimal = async (req, res) => {
+  const existingAnimal = await AnimalModel.findById(req.params.id);
+
+  if (!existingAnimal) {
+    return res.status(400).json({ message: "This animal doesn't exists" });
+  } else {
+    const updateAnimal = await AnimalModel.findByIdAndUpdate(
+      existingAnimal,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updateAnimal);
+  }
+};
+
+module.exports.addNewAnimalFunFacts = async (req, res) => {
+  const { fun_facts } = req.body;
+  const existingAnimal = await AnimalModel.findById(req.params.id);
+
+  if (!existingAnimal) {
+    return res.status(400).json({ message: "This animal doesn't exists" });
+  } else {
+    const duplicateFact = existingAnimal.fun_facts.some((fact) =>
+      fun_facts.includes(fact)
+    );
+
+    if (duplicateFact) {
+      return res
+        .status(400)
+        .json({ message: "This fun fact already exists for this animal" });
+    } else {
+      const updateAnimal = await AnimalModel.findByIdAndUpdate(
+        existingAnimal,
+        { $push: { fun_facts: { $each: [req.body.fun_facts] } } },
+        { new: true }
+      );
+      res.status(200).json(updateAnimal);
+    }
+  }
+};

@@ -9,7 +9,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/animal", require("./routes/animal.routes"));
+app.use("/api/animals", require("./routes/animal.routes"));
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
