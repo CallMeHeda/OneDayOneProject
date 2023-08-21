@@ -1,13 +1,9 @@
 const express = require("express");
+const { setAnimal, getAnimals } = require("../controllers/animal.controller");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  res.json({ animal: "Lion" });
-});
-
-router.post("/", async (req, res) => {
-  res.json({ animal: req.body.animal });
-});
+router.get("/", getAnimals);
+router.post("/", setAnimal);
 
 router.put("/:id", async (req, res) => {
   res.json({ animalId: req.params.id });
