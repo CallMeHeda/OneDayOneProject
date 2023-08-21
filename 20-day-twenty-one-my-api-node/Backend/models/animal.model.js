@@ -37,11 +37,11 @@ const animalSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    format: "uri",
     required: true,
   },
   imageUrl: {
     type: String,
+    format: "uri",
   },
 });
 

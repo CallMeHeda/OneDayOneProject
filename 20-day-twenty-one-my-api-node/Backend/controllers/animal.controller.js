@@ -1,23 +1,11 @@
 const AnimalModel = require("../models/animal.model");
-const { GetObjectCommand } = require("@aws-sdk/client-s3");
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-const { s3Client } = require("../middlewares/upload");
-
-const bucketName = process.env.BUCKET_NAME;
+const { getObjectSignedUrl } = require("../middlewares/upload");
 
 module.exports.getAnimals = async (req, res) => {
   const animals = await AnimalModel.find();
 
-  for (const animal of animals) {
-    const getObjectParams = {
-      Bucket: bucketName,
-      Key: animal.image,
-    };
-    const command = new GetObjectCommand(getObjectParams);
-    const url = await getSignedUrl(s3Client, command, {
-      expiresIn: 3600,
-    });
-    animal.imageUrl = url;
+  for (let animal of animals) {
+    animal.imageUrl = await getObjectSignedUrl(animal.image);
   }
 
   res.status(200).json(animals);
@@ -25,6 +13,10 @@ module.exports.getAnimals = async (req, res) => {
 
 module.exports.postAnimal = async (req, res) => {
   const { name } = req.body;
+  const imageUrl = req.file.location;
+  const imageName = imageUrl
+    .split("https://fun-facts-animals.s3.eu-west-3.amazonaws.com/")
+    .pop();
   const existingAnimal = await AnimalModel.findOne({ name });
   const requiredFields = [
     "name",
@@ -68,7 +60,7 @@ module.exports.postAnimal = async (req, res) => {
     behavior: req.body.behavior,
     conservation_status: req.body.conservation_status,
     fun_facts: req.body.fun_facts,
-    image: req.file.location,
+    image: imageName,
   });
   res.status(200).json(animal);
 };

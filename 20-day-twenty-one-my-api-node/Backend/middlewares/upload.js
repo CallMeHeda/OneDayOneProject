@@ -1,4 +1,5 @@
-const { S3Client } = require("@aws-sdk/client-s3");
+const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 
@@ -19,10 +20,24 @@ const upload = multer({
   storage: multerS3({
     s3: s3Client,
     bucket: bucketName,
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
       cb(null, "images/" + Date.now().toString() + "-" + file.originalname);
     },
   }),
 });
 
-module.exports = { upload, s3Client };
+const getObjectSignedUrl = async function getObjectSignedUrl(key) {
+  const params = {
+    Bucket: bucketName,
+    Key: key,
+  };
+
+  const command = new GetObjectCommand(params);
+  const seconds = 3600;
+  const url = await getSignedUrl(s3Client, command, { expiresIn: seconds });
+
+  return url;
+};
+
+module.exports = { upload, getObjectSignedUrl };
