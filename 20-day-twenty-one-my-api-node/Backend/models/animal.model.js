@@ -13,9 +13,6 @@ const animalSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  taxonomy: {
-    type: [String],
-  },
   habitat: {
     type: String,
     required: true,
@@ -42,6 +39,9 @@ const animalSchema = new mongoose.Schema({
     type: String,
     format: "uri",
     required: true,
+  },
+  imageUrl: {
+    type: String,
   },
 });
 

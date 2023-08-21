@@ -1,7 +1,25 @@
 const AnimalModel = require("../models/animal.model");
+const { GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+const { s3Client } = require("../middlewares/upload");
+
+const bucketName = process.env.BUCKET_NAME;
 
 module.exports.getAnimals = async (req, res) => {
   const animals = await AnimalModel.find();
+
+  for (const animal of animals) {
+    const getObjectParams = {
+      Bucket: bucketName,
+      Key: animal.image,
+    };
+    const command = new GetObjectCommand(getObjectParams);
+    const url = await getSignedUrl(s3Client, command, {
+      expiresIn: 3600,
+    });
+    animal.imageUrl = url;
+  }
+
   res.status(200).json(animals);
 };
 
@@ -13,11 +31,13 @@ module.exports.postAnimal = async (req, res) => {
     "description",
     "category",
     "habitat",
-    "conservation_status",
     "diet",
+    "conservation_status",
     "fun_facts",
-    "image",
   ];
+
+  const missingFields = requiredFields.filter((field) => !req.body[field]);
+  console.log(missingFields);
 
   if (existingAnimal) {
     return res
@@ -25,28 +45,32 @@ module.exports.postAnimal = async (req, res) => {
       .json({ message: "An animal with this name already exists" });
   }
 
-  if (!requiredFields.every((field) => req.body.hasOwnProperty(field))) {
-    res.status(400).json({
-      message: `An animal must be added with these specific fields: ${requiredFields
-        .slice(",")
-        .join(", ")}`,
-    });
-  } else {
-    const animal = await AnimalModel.create({
-      name: req.body.name,
-      description: req.body.description,
-      category: req.body.category,
-      taxonomy: req.body.taxonomy,
-      habitat: req.body.habitat,
-      diet: req.body.diet,
-      characteristic: req.body.characteristic,
-      behavior: req.body.behavior,
-      conservation_status: req.body.conservation_status,
-      fun_facts: req.body.fun_facts,
-      image: req.body.image,
-    });
-    res.status(200).json(animal);
+  if (!req.file) {
+    missingFields.push("image");
   }
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      message: `An animal must be added with these specific fields: ${missingFields.join(
+        ", "
+      )}`,
+    });
+  }
+
+  const animal = await AnimalModel.create({
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    taxonomy: req.body.taxonomy,
+    habitat: req.body.habitat,
+    diet: req.body.diet,
+    characteristic: req.body.characteristic,
+    behavior: req.body.behavior,
+    conservation_status: req.body.conservation_status,
+    fun_facts: req.body.fun_facts,
+    image: req.file.location,
+  });
+  res.status(200).json(animal);
 };
 
 module.exports.editAnimal = async (req, res) => {
