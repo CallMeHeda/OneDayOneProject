@@ -58,16 +58,10 @@ export class AddFunFactsComponent implements OnInit {
           console.log('Animal added:', response.data);
           this.animalForm.reset();
           this.selectedImage = null;
-          this.fetchAnimals();
         })
         .catch((error) => {
           console.error('Error adding animal', error);
         });
     }
-  }
-  fetchAnimals(): void {
-    axios.get('http://localhost:3000/api/animals').then((response) => {
-      console.log(response.data);
-    });
   }
 }
