@@ -1,0 +1,31 @@
+.upload-file {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #cd3545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px #cd3545, inset 0px 0px 10px #cd3545;
+
+  .icon {
+    color: #cd3545;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .input-upload {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+  }
+}
+
+.btn {
+  background-color: #cd3545;
+  border: none;
+}

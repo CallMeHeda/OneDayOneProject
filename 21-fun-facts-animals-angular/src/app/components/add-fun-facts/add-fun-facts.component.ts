@@ -33,6 +33,7 @@ export class AddFunFactsComponent implements OnInit {
   }
 
   postAnimal(): void {
+    console.log('hello');
     if (this.animalForm.valid) {
       const newAnimal = this.animalForm.value;
       const formData = new FormData();

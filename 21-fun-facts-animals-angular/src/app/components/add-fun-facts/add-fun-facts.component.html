@@ -1,58 +1,89 @@
-<form [formGroup]="animalForm" (ngSubmit)="postAnimal()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" formControlName="name">
-    <div *ngIf="animalForm.get('name')?.invalid && animalForm.get('name')?.touched">
-        Name is required.
+<div class="flex justify-content-center">
+    <p class="text-5xl text-400 uppercase">Add animal</p>
+</div>
+
+<form class="grid flex flex-column align-content-center gap-4 mt-8" [formGroup]="animalForm" (ngSubmit)="postAnimal()">
+    <div class="flex flex-wrap gap-4">
+        <p-fieldset legend="Header">
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" formControlName="name" pInputText />
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">description</label>
+                    <input type="text" id="description" formControlName="description" pInputText />
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">category</label>
+                    <input type="text" id="category" formControlName="category" pInputText />
+                </span>
+            </div>
+        </p-fieldset>
+
+
+        <p-fieldset legend="Header">
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">habitat</label>
+                    <input type="text" id="habitat" formControlName="habitat" pInputText />
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">diet</label>
+                    <input type="text" id="diet" formControlName="diet" pInputText />
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">characteristic</label>
+                    <input type="text" id="characteristic" formControlName="characteristic" pInputText />
+                </span>
+            </div>
+        </p-fieldset>
+
+        <p-fieldset legend="Header">
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">behavior</label>
+                    <input type="text" id="behavior" formControlName="behavior" pInputText />
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">conservation_status</label>
+                    <input type="text" id="conservation_status" formControlName="conservation_status" pInputText />
+                </span>
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <span class="label">
+                    <label for="name">fun_facts</label>
+                    <input type="text" id="fun_facts" formControlName="fun_facts" pInputText />
+                </span>
+            </div>
+        </p-fieldset>
+
+        <div class="upload-file field col-12 md:col-4 align-self-center">
+            <i class="icon pi pi-upload"></i>
+            <input class="input-upload" type="file" id="image" formControlName="image"
+                (change)="onFileSelected($event)">
+        </div>
     </div>
 
-    <label for="description">description:</label>
-    <input type="text" id="description" name="description" formControlName="description">
-    <div *ngIf="animalForm.get('description')?.invalid && animalForm.get('description')?.touched">
-        description is required.
+    <div class="flex flex-wrap justify-content-center mt-4">
+        <div class="btnBox flex flex-wrap align-items-center">
+            <button pButton type="submit" class="btn p-button-rounded p-button-lg" [disabled]="!animalForm.valid">Add
+                Animal</button>
+        </div>
     </div>
-
-    <label for="category">category:</label>
-    <input type="text" id="category" name="category" formControlName="category">
-    <div *ngIf="animalForm.get('category')?.invalid && animalForm.get('category')?.touched">
-        category is required.
-    </div>
-
-    <label for="habitat">habitat:</label>
-    <input type="text" id="habitat" name="habitat" formControlName="habitat">
-    <div *ngIf="animalForm.get('habitat')?.invalid && animalForm.get('habitat')?.touched">
-        habitat is required.
-    </div>
-
-    <label for="diet">diet:</label>
-    <input type="text" id="diet" name="diet" formControlName="diet">
-    <div *ngIf="animalForm.get('diet')?.invalid && animalForm.get('diet')?.touched">
-        diet is required.
-    </div>
-
-    <label for="characteristic">characteristic:</label>
-    <input type="text" id="characteristic" name="characteristic" formControlName="characteristic">
-
-    <label for="behavior">behavior:</label>
-    <input type="text" id="behavior" name="behavior" formControlName="behavior">
-
-    <label for="conservation_status">conservation_status:</label>
-    <input type="text" id="conservation_status" name="conservation_status" formControlName="conservation_status">
-    <div *ngIf="animalForm.get('conservation_status')?.invalid && animalForm.get('conservation_status')?.touched">
-        conservation_status is required.
-    </div>
-
-    <label for="fun_facts">fun_facts:</label>
-    <input type="text" id="fun_facts" name="fun_facts" formControlName="fun_facts">
-    <div *ngIf="animalForm.get('fun_facts')?.invalid && animalForm.get('fun_facts')?.touched">
-        fun_facts is required.
-    </div>
-
-    <label for="image">image:</label>
-    <input type="file" id="image" name="image" formControlName="image" (change)="onFileSelected($event)">
-    <div *ngIf="animalForm.get('image')?.invalid && animalForm.get('image')?.touched">
-        image is required.
-    </div>
-
-
-    <button type="submit" [disabled]="!animalForm.valid">Add Animal</button>
 </form>
