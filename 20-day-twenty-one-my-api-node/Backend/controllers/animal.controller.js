@@ -24,12 +24,16 @@ module.exports.getByName = async (req, res) => {
 };
 
 module.exports.postAnimal = async (req, res) => {
-  const { name } = req.body;
+  const animalName = req.body.name.toLowerCase();
   const imageUrl = req.file.location;
   const imageName = imageUrl
     .split("https://fun-facts-animals.s3.eu-west-3.amazonaws.com/")
     .pop();
-  const existingAnimal = await AnimalModel.findOne({ name });
+  const existingAnimal = await AnimalModel.findOne({
+    name: { $regex: new RegExp("^" + animalName + "$", "i") },
+  });
+  console.log(existingAnimal);
+
   const requiredFields = [
     "name",
     "description",
@@ -41,7 +45,6 @@ module.exports.postAnimal = async (req, res) => {
   ];
 
   const missingFields = requiredFields.filter((field) => !req.body[field]);
-  console.log(missingFields);
 
   if (existingAnimal) {
     return res
