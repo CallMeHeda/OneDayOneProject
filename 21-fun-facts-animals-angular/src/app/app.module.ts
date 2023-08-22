@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,9 +14,13 @@ import { FieldsetModule } from 'primeng/fieldset';
 
 import { AppComponent } from './app.component';
 import { AddFunFactsComponent } from './components/add-fun-facts/add-fun-facts.component';
+import { GetAnimalsComponent } from './components/get-animals/get-animals.component';
+
+import { register } from 'swiper/element/bundle';
+register();
 
 @NgModule({
-  declarations: [AppComponent, AddFunFactsComponent],
+  declarations: [AppComponent, AddFunFactsComponent, GetAnimalsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,5 +36,6 @@ import { AddFunFactsComponent } from './components/add-fun-facts/add-fun-facts.c
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

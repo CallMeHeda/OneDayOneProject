@@ -32,7 +32,6 @@ module.exports.postAnimal = async (req, res) => {
   const existingAnimal = await AnimalModel.findOne({
     name: { $regex: new RegExp("^" + animalName + "$", "i") },
   });
-  console.log(existingAnimal);
 
   const requiredFields = [
     "name",

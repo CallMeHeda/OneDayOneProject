@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { Swiper } from 'swiper';
 
 @Component({
   selector: 'app-get-animals',
@@ -7,6 +8,15 @@ import axios from 'axios';
   styleUrls: ['./get-animals.component.scss'],
 })
 export class GetAnimalsComponent implements OnInit {
+  animals: [
+    {
+      imageUrl: '';
+    }
+  ] = [
+    {
+      imageUrl: '',
+    },
+  ];
   constructor() {}
 
   ngOnInit(): void {
@@ -16,6 +26,7 @@ export class GetAnimalsComponent implements OnInit {
   fetchAnimals(): void {
     axios.get('http://localhost:3000/api/animals').then((response) => {
       console.log(response.data);
+      this.animals = response.data;
     });
   }
 }
