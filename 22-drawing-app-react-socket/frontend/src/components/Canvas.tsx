@@ -1,5 +1,11 @@
 import { useDraw } from "../hooks/useDraw";
-import { useState, useCallback, MouseEvent, ChangeEvent } from "react";
+import {
+  useState,
+  useCallback,
+  MouseEvent,
+  ChangeEvent,
+  useEffect,
+} from "react";
 
 import { CirclePicker } from "react-color";
 
@@ -7,9 +13,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEraser } from "@fortawesome/free-solid-svg-icons";
 
+import { io } from "socket.io-client";
+
 library.add(faEraser);
 
 const Canvas = () => {
+  const socket = io("http://localhost:3001", {
+    transports: ["websocket"],
+  });
+
   const {
     startDrawing,
     stopDrawing,
@@ -120,6 +132,37 @@ const Canvas = () => {
     [canvasRef, color, isDrawing, brushSize, lastX, lastY]
   );
 
+  useEffect(() => {
+    const ctx = canvasRef.current?.getContext("2d");
+
+    socket.emit("join");
+
+    socket.on("ready-to-get-state", () => {
+      if (!canvasRef.current?.toDataURL()) return;
+      // console.log("send canvas state");
+      socket.emit("canvas-state", canvasRef.current.toDataURL());
+    });
+
+    socket.on("state-from-server", (state: string) => {
+      const img = new Image();
+      img.src = state;
+      img.onload = () => {
+        ctx?.drawImage(img, 0, 0);
+      };
+    });
+
+    socket.on("isDrawing", (e: MouseEvent) => {
+      if (!ctx) return console.log("ctx is null");
+      draw(e);
+    });
+
+    socket.on("clear", () => {
+      clearCanvas();
+    });
+
+    return () => {};
+  }, [socket]);
+
   return (
     <div className="flex flex-col w-screen canvasContainer">
       <div className="flex justify-center canvasAndColors">
@@ -158,7 +201,7 @@ const Canvas = () => {
             <button
               type="button"
               className="bg-red-600 p-2 rounded-md uppercase text-gray-100 font-semibold ml-4 mb-6 font-cursive"
-              onClick={clearCanvas}
+              onClick={() => socket.emit("clear")}
             >
               Clear canvas
               <span className="text-gray-900">
