@@ -1,11 +1,18 @@
 import axios from "axios";
 import { useState, useEffect, ChangeEvent } from "react";
+import { Dropdown } from "primereact/dropdown";
 
 export default function Translator() {
   const [textToTranslate, setTextToTranslate] = useState("");
   const [languageTarget, setLanguageTarget] = useState("en");
+  const [languageTarget2, setLanguageTarget2] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [languages, setLanguages] = useState([{ language: "", name: "" }]);
+
+  const languageOptions = languages.map((language) => ({
+    value: language.language,
+    label: language.name,
+  }));
 
   useEffect(() => {
     getData();
@@ -18,8 +25,8 @@ export default function Translator() {
       url: "https://api-free.deepl.com/v2/translate",
       params: {
         text: textToTranslate,
-        source_lang: languages,
-        target_lang: languageTarget,
+        source_lang: languageTarget,
+        target_lang: languageTarget2,
         auth_key: process.env.REACT_APP_API_KEY,
       },
     };
@@ -45,21 +52,37 @@ export default function Translator() {
     try {
       const response = await axios.request(options);
       setLanguages(response.data);
+      console.log(languages);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTextToTranslate(e.target.value);
+  };
+  const handleDropdownChange = (e: { value: any }) => {
+    setLanguageTarget2(e.value);
+  };
 
-    if (name === "textToTranslate") {
-      setTextToTranslate(value);
-    } else if (name === "language") {
-      setLanguageTarget(value);
+  const selectedLanguagesTemplate = (option: any, props: any) => {
+    if (option) {
+      return (
+        <div className="flex align-items-center">
+          <div>{option.value}</div>
+        </div>
+      );
     }
+
+    return <span>{props.placeholder}</span>;
+  };
+
+  const LanguageOptionTemplate = (option: any) => {
+    return (
+      <div className="flex align-items-center">
+        <div>{option.label}</div>
+      </div>
+    );
   };
 
   return (
@@ -77,19 +100,19 @@ export default function Translator() {
         />
         <br />
         <label htmlFor="language">Target Language:</label>
-        <select
-          id="language"
-          value={languageTarget}
+        <Dropdown
+          value={languageTarget2}
+          onChange={handleDropdownChange}
           name="language"
-          onChange={handleInputChange}
-          required
-        >
-          {languages.map((lang, index) => (
-            <option key={index} value={lang.language}>
-              {lang.name}
-            </option>
-          ))}
-        </select>
+          options={languageOptions}
+          optionLabel="name"
+          placeholder="Select a language"
+          filter
+          valueTemplate={selectedLanguagesTemplate}
+          itemTemplate={LanguageOptionTemplate}
+          className="w-full md:w-14rem"
+        />
+
         <br />
         <button type="submit">Translate</button>
       </form>
