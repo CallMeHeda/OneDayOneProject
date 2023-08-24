@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState, useEffect, ChangeEvent } from "react";
-import { Dropdown } from "primereact/dropdown";
-import { Editor, EditorTextChangeEvent } from "primereact/editor";
-import { Button } from "primereact/button";
+import { useState, useEffect } from "react";
+import LanguageDropdown from "./LanguageDropdown";
+import TranslationEditor from "./TranslationEditor";
+import { EditorTextChangeEvent } from "primereact/editor";
 
 export default function Translator() {
   const [textToTranslate, setTextToTranslate] = useState("");
@@ -26,10 +26,6 @@ export default function Translator() {
     }
   }, [textToTranslate, language, languageTarget]);
 
-  //   useEffect(() => {
-  //     console.log(textToTranslate);
-  //   }, [textToTranslate]);
-
   const handleTranslate = async () => {
     const options = {
       method: "POST",
@@ -46,7 +42,6 @@ export default function Translator() {
       const response = await axios.request(options);
       const translatedText = response.data.translations[0].text;
       setTranslatedText(translatedText);
-      //   console.log(textToTranslate);
     } catch (error) {
       console.error(error);
     }
@@ -83,53 +78,25 @@ export default function Translator() {
     }
   };
 
-  const selectedLanguagesTemplate = (option: any, props: any) => {
-    if (option) {
-      return (
-        <div className="flex align-items-center">
-          <div>{option.label}</div>
-        </div>
-      );
-    }
-
-    return <span>{props.placeholder}</span>;
-  };
-
-  const LanguageOptionTemplate = (option: any) => {
-    return (
-      <div className="flex align-items-center">
-        <div>{option.label}</div>
-      </div>
-    );
-  };
-
   const renderHeaderLanguage = () => {
     return (
-      <Dropdown
+      <LanguageDropdown
         value={language}
         onChange={handleDropdownChange}
         name="language"
         options={languageOptions}
-        optionLabel="name"
-        placeholder="Starting Language"
-        valueTemplate={selectedLanguagesTemplate}
-        itemTemplate={LanguageOptionTemplate}
-        className="w-full md:w-14rem"
+        placeholder="Langue de départ"
       />
     );
   };
   const renderHeaderTargetLanguage = () => {
     return (
-      <Dropdown
+      <LanguageDropdown
         value={languageTarget}
         onChange={handleDropdownChange}
         name="languageTarget"
         options={languageOptions}
-        optionLabel="name"
-        placeholder="Select a Language"
-        valueTemplate={selectedLanguagesTemplate}
-        itemTemplate={LanguageOptionTemplate}
-        className="w-full md:w-14rem"
+        placeholder="Sélectionnez une langue"
       />
     );
   };
@@ -137,30 +104,23 @@ export default function Translator() {
   const headerTargetLanguage = renderHeaderTargetLanguage();
 
   return (
-    <div>
-      <h1>Translation</h1>
-      <form>
-        <label htmlFor="textToTranslate">Text to Translate:</label>
-        <div className="flex flex-row flex-wrap justify-content-center gap-2">
-          <div className="card ">
-            <Editor
-              value={textToTranslate}
-              onTextChange={handleInputChange}
-              headerTemplate={headerLanguage}
-              style={{ width: "750px", height: "320px" }}
-            />
-          </div>
-          <div className="card">
-            <Editor
-              value={translatedText}
-              readOnly
-              headerTemplate={headerTargetLanguage}
-              style={{ width: "750px", height: "320px" }}
-            />
-          </div>
-        </div>
-        <br />
-      </form>
+    <div className="flex flex-row flex-wrap justify-content-center gap-2">
+      <div className="card ">
+        <TranslationEditor
+          value={textToTranslate}
+          onTextChange={handleInputChange}
+          headerTemplate={headerLanguage}
+          style={{ width: "750px", height: "320px" }}
+        />
+      </div>
+      <div className="card">
+        <TranslationEditor
+          value={translatedText}
+          readOnly
+          headerTemplate={headerTargetLanguage}
+          style={{ width: "750px", height: "320px" }}
+        />
+      </div>
     </div>
   );
 }
