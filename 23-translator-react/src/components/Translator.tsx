@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState, useEffect, ChangeEvent } from "react";
 import { Dropdown } from "primereact/dropdown";
+import { Editor, EditorTextChangeEvent } from "primereact/editor";
+import { Button } from "primereact/button";
 
 export default function Translator() {
   const [textToTranslate, setTextToTranslate] = useState("");
-  const [languageTarget, setLanguageTarget] = useState("en");
-  const [languageTarget2, setLanguageTarget2] = useState("");
+  const [language, setLanguage] = useState("");
+  const [languageTarget, setLanguageTarget] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [languages, setLanguages] = useState([{ language: "", name: "" }]);
 
@@ -18,23 +20,33 @@ export default function Translator() {
     getData();
   }, []);
 
-  const handleTranslate = async (e: any) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (language && languageTarget) {
+      handleTranslate();
+    }
+  }, [textToTranslate, language, languageTarget]);
+
+  //   useEffect(() => {
+  //     console.log(textToTranslate);
+  //   }, [textToTranslate]);
+
+  const handleTranslate = async () => {
     const options = {
       method: "POST",
       url: "https://api-free.deepl.com/v2/translate",
       params: {
         text: textToTranslate,
-        source_lang: languageTarget,
-        target_lang: languageTarget2,
+        source_lang: language,
+        target_lang: languageTarget,
         auth_key: process.env.REACT_APP_API_KEY,
       },
     };
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
-      setTranslatedText(response.data.translations[0].text);
+      const translatedText = response.data.translations[0].text;
+      setTranslatedText(translatedText);
+      //   console.log(textToTranslate);
     } catch (error) {
       console.error(error);
     }
@@ -52,24 +64,30 @@ export default function Translator() {
     try {
       const response = await axios.request(options);
       setLanguages(response.data);
-      console.log(languages);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTextToTranslate(e.target.value);
+  const handleInputChange = (e: EditorTextChangeEvent) => {
+    if (e.htmlValue !== null) {
+      setTextToTranslate(e.htmlValue);
+    }
   };
-  const handleDropdownChange = (e: { value: any }) => {
-    setLanguageTarget2(e.value);
+  const handleDropdownChange = (e: any) => {
+    const { name, value } = e.target;
+    if (name === "language") {
+      setLanguage(value);
+    } else {
+      setLanguageTarget(value);
+    }
   };
 
   const selectedLanguagesTemplate = (option: any, props: any) => {
     if (option) {
       return (
         <div className="flex align-items-center">
-          <div>{option.value}</div>
+          <div>{option.label}</div>
         </div>
       );
     }
@@ -85,41 +103,64 @@ export default function Translator() {
     );
   };
 
+  const renderHeaderLanguage = () => {
+    return (
+      <Dropdown
+        value={language}
+        onChange={handleDropdownChange}
+        name="language"
+        options={languageOptions}
+        optionLabel="name"
+        placeholder="Starting Language"
+        valueTemplate={selectedLanguagesTemplate}
+        itemTemplate={LanguageOptionTemplate}
+        className="w-full md:w-14rem"
+      />
+    );
+  };
+  const renderHeaderTargetLanguage = () => {
+    return (
+      <Dropdown
+        value={languageTarget}
+        onChange={handleDropdownChange}
+        name="languageTarget"
+        options={languageOptions}
+        optionLabel="name"
+        placeholder="Select a Language"
+        valueTemplate={selectedLanguagesTemplate}
+        itemTemplate={LanguageOptionTemplate}
+        className="w-full md:w-14rem"
+      />
+    );
+  };
+  const headerLanguage = renderHeaderLanguage();
+  const headerTargetLanguage = renderHeaderTargetLanguage();
+
   return (
     <div>
       <h1>Translation</h1>
-      <form onSubmit={handleTranslate}>
+      <form>
         <label htmlFor="textToTranslate">Text to Translate:</label>
-        <input
-          type="text"
-          name="textToTranslate"
-          id="textToTranslate"
-          value={textToTranslate}
-          onChange={handleInputChange}
-          required
-        />
+        <div className="flex flex-row flex-wrap justify-content-center gap-2">
+          <div className="card ">
+            <Editor
+              value={textToTranslate}
+              onTextChange={handleInputChange}
+              headerTemplate={headerLanguage}
+              style={{ width: "750px", height: "320px" }}
+            />
+          </div>
+          <div className="card">
+            <Editor
+              value={translatedText}
+              readOnly
+              headerTemplate={headerTargetLanguage}
+              style={{ width: "750px", height: "320px" }}
+            />
+          </div>
+        </div>
         <br />
-        <label htmlFor="language">Target Language:</label>
-        <Dropdown
-          value={languageTarget2}
-          onChange={handleDropdownChange}
-          name="language"
-          options={languageOptions}
-          optionLabel="name"
-          placeholder="Select a language"
-          filter
-          valueTemplate={selectedLanguagesTemplate}
-          itemTemplate={LanguageOptionTemplate}
-          className="w-full md:w-14rem"
-        />
-
-        <br />
-        <button type="submit">Translate</button>
       </form>
-      <div>
-        <h2>Translated Text:</h2>
-        <p>{translatedText}</p>
-      </div>
     </div>
   );
 }
