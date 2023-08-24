@@ -6,7 +6,7 @@ import { EditorTextChangeEvent } from "primereact/editor";
 
 export default function Translator() {
   const [textToTranslate, setTextToTranslate] = useState("");
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState("French");
   const [languageTarget, setLanguageTarget] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [languages, setLanguages] = useState([{ language: "", name: "" }]);
@@ -85,7 +85,7 @@ export default function Translator() {
         onChange={handleDropdownChange}
         name="language"
         options={languageOptions}
-        placeholder="Langue de départ"
+        placeholder="Language"
       />
     );
   };
@@ -96,7 +96,7 @@ export default function Translator() {
         onChange={handleDropdownChange}
         name="languageTarget"
         options={languageOptions}
-        placeholder="Sélectionnez une langue"
+        placeholder="Select a language"
       />
     );
   };
@@ -104,23 +104,25 @@ export default function Translator() {
   const headerTargetLanguage = renderHeaderTargetLanguage();
 
   return (
-    <div className="flex flex-row flex-wrap justify-content-center gap-2">
-      <div className="card ">
-        <TranslationEditor
-          value={textToTranslate}
-          onTextChange={handleInputChange}
-          headerTemplate={headerLanguage}
-          style={{ width: "750px", height: "320px" }}
-        />
-      </div>
-      <div className="card">
-        <TranslationEditor
-          value={translatedText}
-          readOnly
-          headerTemplate={headerTargetLanguage}
-          style={{ width: "750px", height: "320px" }}
-        />
-      </div>
+    <div className="flex flex-row flex-wrap justify-content-center gap-1 align-self-center mt-8">
+      <TranslationEditor
+        value={textToTranslate}
+        onTextChange={handleInputChange}
+        headerTemplate={headerLanguage}
+        style={{
+          width: "750px",
+          height: "400px",
+        }}
+      />
+      <TranslationEditor
+        value={translatedText}
+        readOnly
+        headerTemplate={headerTargetLanguage}
+        style={{
+          width: "750px",
+          height: "400px",
+        }}
+      />
     </div>
   );
 }

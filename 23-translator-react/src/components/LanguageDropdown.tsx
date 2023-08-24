@@ -10,7 +10,7 @@ export default function LanguageDropdown(props: LanguageDropdownProps) {
       options={props.options}
       optionLabel="label"
       placeholder={props.placeholder}
-      className="w-full md:w-14rem"
+      className="w-full"
     />
   );
 }

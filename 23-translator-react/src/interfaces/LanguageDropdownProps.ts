@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export default interface LanguageDropdownProps {
   value: string;
   onChange: (e: { target: { name: string; value: string } }) => void;
