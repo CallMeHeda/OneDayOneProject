@@ -1,27 +1,12 @@
-# 25InstantChatAngular
+[![My Skills](https://skillicons.dev/icons?i=angular,sass,bootstrap)](https://skillicons.dev)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+## Previews
 
-## Development server
+![Capture d’écran (415)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/b46f3f15-f4f4-4225-9501-5e9696b02a57)
+![Capture d’écran (416)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/ec5ccbda-a63e-4614-8986-1d75b64e46f9)
+![Capture d’écran (417)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/67143a25-77c4-4d9d-afa7-7414e8e1fc3f)
+![Capture d’écran (418)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/a52c257e-e9ad-46be-828e-15d064f2e7ba)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Note to myself
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Need to review Socket.io because it's really interesting!
