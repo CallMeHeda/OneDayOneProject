@@ -1,10 +1,7 @@
-body {
-  background-color: #e5e5e5;
-}
-
 .container-fluid {
   padding: 50px 200px;
   overflow: hidden;
+  background-color: #2f2d2d;
 }
 
 .user-list-card {
@@ -84,13 +81,13 @@ body {
     // background-repeat: no-repeat;
     // background-size: cover;
     // background-position: center center;
-    background-color: #e1ffee;
+    background-color: #141828;
     height: calc(100vh - 125px);
     padding: 30px;
     overflow-y: auto;
 
     .message-container {
-      background-color: white;
+      background-color: #f0ece0;
       padding: 7px;
       border-radius: 5px;
       width: fit-content;
@@ -103,7 +100,7 @@ body {
       justify-content: flex-end;
 
       .message-container {
-        background-color: lightskyblue;
+        background-color: #6b8e23;
       }
     }
   }
@@ -120,9 +117,10 @@ body {
       background-color: white;
       border: 1px solid #d8ddec;
       box-sizing: border-box;
-      border-radius: 20px;
+      border-radius: 2px;
       font-size: 1rem;
       color: black;
+      width: 44vw;
     }
   }
 }

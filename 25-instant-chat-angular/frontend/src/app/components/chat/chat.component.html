@@ -1,13 +1,33 @@
+<!-- LOGIN MODAL -->
+<ng-template #popup let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your login" class="form-control" [(ngModel)]="login" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-sm btn-primary" (click)="connection(d)">Login</button>
+    </div>
+</ng-template>
+
 <div class="container-fluid" *ngIf="showScreen">
     <div class="row">
         <div class="col-md-4">
             <div class="user-list-card">
                 <div class="user-card" *ngFor="let user of userList" (click)="selectUserHandler(user.login)"
                     [ngClass]="[user?.login === selectedUser?.login ? 'active' : '']">
-
                     <img [src]="user?.image" [alt]="user?.name" class="avatar" />
                     <p class="username">{{user?.name}}</p>
-
                 </div>
             </div>
         </div>
@@ -29,7 +49,6 @@
                     </div>
 
                     <div class="chat-footer">
-
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group mb-0">
@@ -37,45 +56,14 @@
                                         [(ngModel)]="messageText" (keyup)="$event.keyCode === 13 && sendMessage()" />
                                 </div>
                             </div>
-
                             <div class="col-md-2 text-center align-self-center">
-                                <button class="btn btn-primary btn-sm px-3" (click)="sendMessage()">Send
+                                <button class="btn btn-danger btn-sm px-3" (click)="sendMessage()">Send
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </ng-container>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
-<ng-template #popup let-d="dismiss">
-
-    <div class="modal-header">
-        <h4 class="modal-title">Login</h4>
-    </div>
-
-    <div class="modal-body">
-
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="form-group">
-                    <input type="text" placeholder="Enter your login number" class="form-control" [(ngModel)]="login" />
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="modal-footer">
-        <button class="btn btn-sm btn-primary" (click)="connection(d)">Login</button>
-    </div>
-
-</ng-template>
