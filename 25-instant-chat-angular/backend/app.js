@@ -6,8 +6,6 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const port = 3000;
 
-// app.get("/", (req, res) => {});
-
 io.on("connection", (socket) => {
   // when the client emits 'user joined', this listens and executes
   socket.on("join", (data) => {
