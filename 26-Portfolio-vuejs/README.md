@@ -1,5 +1,5 @@
-[![My Skills](https://skillicons.dev/icons?i=vue,vite,ts,sass,jquery)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vue,vite,ts,sass)](https://skillicons.dev)
 
 ### Private code 👀
 
-https://fatimaelamri.tk
+https://fatimaelamri.netlify.app/
