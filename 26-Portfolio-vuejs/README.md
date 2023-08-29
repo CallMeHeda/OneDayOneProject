@@ -29,7 +29,3 @@ https://fatimaelamri.netlify.app/
 ### English Versions + Wappalyzer
 
 ![Capture d’écran (425)](https://github.com/CallMeHeda/OneDayOneProject/assets/72311243/5c75ef52-a4ef-483f-8691-dc00d0dc7113)
-
-### Deployment status (Netlify)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f636297b-b8b6-48f4-91db-f32a692c9e8d/deploy-status)](https://app.netlify.com/sites/fatimaelamri/deploys)
