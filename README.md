@@ -37,3 +37,10 @@ Projets réalisés pendant le "One Day One Project Challenge" :art:
 Ce défi m'a permis de repousser mes limites en matière de développement et d'acquérir une expérience précieuse avec une variété de technologies. Chaque projet a été une opportunité d'apprentissage et de croissance personnelle :trophy:
 
 Le "One Day One Project Challenge" était avant tout un voyage personnel pour découvrir mes capacités et mes domaines d'amélioration en tant que développeuse junior. Je partage ces projets et leurs codes sources pour montrer ma progression au fil du temps et pour inspirer d'autres personnes qui souhaitent se lancer dans des défis similaires :rocket:
+
+## Droit d'auteur
+
+Tous les projets et codes sources partagés dans le cadre du "One Day One Project Challenge" sont la propriété intellectuelle de Fatima EL-AMRI et sont protégés par le droit d'auteur. Vous êtes autorisé à consulter, utiliser et vous inspirer de ces projets à des fins d'apprentissage et de développement personnel. Toute utilisation commerciale ou reproduction sans autorisation est strictement interdite.
+
+© 2023 Fatima
+
